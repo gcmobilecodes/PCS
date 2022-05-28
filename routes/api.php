@@ -47,6 +47,5 @@ Route::get('checkdate', [DetailsController::class, 'CheckdetailpNow']);
 
 
 
-
 });
 
