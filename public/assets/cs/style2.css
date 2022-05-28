@@ -1,0 +1,74 @@
+.buttonsr{
+    float:right;
+}
+.button-color{
+background-color: black;
+color: white;
+}
+
+.btn-black{
+    background-color: black !important;
+    color: white !important;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 3px !important;
+}
+.form-control-sm {
+    min-height: calc(1.5em + (0.5rem + 2px));
+    padding: 0.3rem 1.3rem !important;
+    font-size: .875rem !important;
+    border-radius: 0.2rem;
+}
+.sidebar{
+    background-color: green!important;
+    color:white;
+    /* width:320px !important; */
+}
+.menu-title{
+    color:white !important;
+}
+.icon-grid{
+    color:white !important;
+}
+.navbar {
+    background-color: black !important;
+}
+.top-navv{
+background-color: black !important;
+}
+#navbar-search-input{
+    color:white !important;
+}
+.modal-content {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 120% !important;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 0.3rem;
+    outline: 0;
+}
+
+element.style {
+    width: 192px;
+    padding-left: 100px !important;
+}
+.formdiv{
+    margin: auto;
+}
+.sidebar .nav .nav-item.active > .nav-link{
+    background-color:blue!important;
+}
+
+.card.card-dark-blue{
+    background-color: blue !important;
+    padding:20px
+}
+.card.card-light-blue {
+    background-color: green !important;
+}

@@ -1,0 +1,79 @@
+body{
+    background: url("../cs/image/images1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.formdiv{
+    background: url("../cs/image/blue1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:400px;
+    height:400px;
+    /* border:1px solid black; */
+padding:20px;
+margin-top: 70px;
+}
+@media(max-width: 374px) {
+    .formdiv {
+        width:300px;
+        height:300px;
+    }
+}
+
+
+.psw a {
+    color: #F58415;
+}
+
+.pswww {
+    color: black;
+}
+
+#forgotan {
+    color: #F58415;
+}
+
+#hideimg {
+    position: absolute;
+    right: 18px;
+    top: 30%;
+}
+#togglePassword{
+    position: absolute;
+    right: 18px;
+    top: 30%;
+}
+
+.form-floating {
+    position: relative;
+}
+
+#forgot a {
+    float: right;
+    color: #7568a5;
+    margin-bottom: 20px;
+}
+
+#sbutton
+{
+    background-color: green;
+}
+.action_heads{
+    margin-left: 80px !important;
+}
+element.style {
+    width: 192px;
+    padding-left: 100px !important;
+}
+.formdiv{
+    margin: auto;
+    margin-top: 70px;
+}
+.ckeckboxx{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+
+
+
