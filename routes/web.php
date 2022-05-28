@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [LoginController::class, 'AdminLogin'])->name('Admin');
+Route::get('/login', [LoginController::class, 'AdminLogin'])->name('Admin');
 
 
 Auth::routes();
