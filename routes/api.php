@@ -41,7 +41,6 @@ Route::get('history', [DetailsController::class, 'checkdetailbyDate']);
 
 
 Route::get('checkdate', [DetailsController::class, 'CheckdetailNow']);
-Route::get('checkdate', [DetailsController::class, 'CheckdetailpNow']);
 
 
 
