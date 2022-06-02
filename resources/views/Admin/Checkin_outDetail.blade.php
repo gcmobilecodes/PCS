@@ -167,7 +167,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                success: function(data) {
+                 success: function(data) {
                     $('#myModal').modal('hide');
                     $('.edit_category').append('<div class="alert alert-success message">' + data +
                         '</div>');
