@@ -59,8 +59,6 @@
                     <div class="modal-body">
                     <p class="edit_category"></p>
                     <div id="uploads">
-
-
                     </div>
                     <div id="uploads">
                     </div>
@@ -251,10 +249,7 @@
                     //     }
 
  }
-
-
-
-            });
+});
         })
     </script>
 @endsection
