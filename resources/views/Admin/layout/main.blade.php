@@ -116,17 +116,13 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                             <i class="ti-settings text-primary"></i>
                             Settings
                         </a>
-
-
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
 
-<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-   @csrf
-</form> <span> <i class="ti-power-off text-primary"></i>   Logout </a>
-
-
-                    </div>
+         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+          @csrf
+         </form> <span> <i class="ti-power-off text-primary"></i>   Logout </a>
+         </div>
                 </li>
 
             </ul>
@@ -159,7 +155,6 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                     <a class="nav-link" href="{{url('/detail')}}">
                         <i class="icon-grid menu-icon"></i>
                         <span class="menu-title">Ckeckin Checkout Detail</span>
-
                     </a>
                 </li>
             </ul>
