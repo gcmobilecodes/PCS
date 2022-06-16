@@ -30,10 +30,7 @@ class User extends Authenticatable
 
 
     ];
-    function getDetail()
-    {
-        return $this->hasOne(Detail::class);
-    }
+
     function getCheckinDetail()
     {
         return $this->hasOne(Checkin::class);
