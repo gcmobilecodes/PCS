@@ -15,6 +15,4 @@ class Checkout extends Model
         'date',
         'checkin_time',
         'checkout_time'
-
-
-    ];}
+];}

@@ -15,9 +15,7 @@ class Detail extends Model
         'date',
         'time'
 ];
-    public function getUser(){
-        return $this->hasMany('users');
-    }
+
 
 
 }
