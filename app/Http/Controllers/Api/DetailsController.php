@@ -15,26 +15,7 @@ use Illuminate\Support\Facades\DB;
 
 class DetailsController extends Controller
 {
-    public function detail(request $request){
-        // $id = Auth::id();
-        $users = new Detail();
 
-        $users->user_id = $request->user_id;
-        $users->Restaurant_name = $request->Restaurant_name;
-
-        $users->date = $request->date;
-
-        $users->time = $request->time;
-        $users->status = $request->status;
-
-        $users->save();
-
-        if ($users != null) {
-            return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
-        }
-
-        return response()->json(['statusCode' => 400, 'message' => 'Please check your data!'], 400);
-        }
 
 
 
