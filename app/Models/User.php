@@ -37,7 +37,7 @@ class User extends Authenticatable
     }
     function getCheckoutDetail()
     {
-        return $this->hasOne(checkout::class);
+        return $this->hasOne(Checkout::class);
     }
 
 
