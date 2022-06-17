@@ -189,7 +189,7 @@
                     console.log(service);
 
                     if (data.profile_pic) {
-                        var imagee = "18.119.37.224/" + data.profile_pic;
+                        var imagee = "http://18.119.37.224/" + data.profile_pic;
                         console.log(imagee);
 
                     } else {
