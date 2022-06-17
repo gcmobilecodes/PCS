@@ -19,18 +19,10 @@
           <center>  <h1>Login</h1></center>
                <form method="POST" action="{{ route('login') }}">
                 @csrf
-               {{-- <div class="form-floating mb-3 ">
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                <label for="email" class=" floatingInput fcol-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-                @error('email')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-            </div> --}}
+
            <div class="form-floating mb-3 ">
                 <input id="mobile_number" type="text" class="form-control @error('mobile_number') is-invalid @enderror" name="mobile_number" value="{{ old('mobile_number') }}" required autocomplete="mobile_number" autofocus>
-                <label for="mobile_number" class=" floatingInput fcol-md-4 col-form-label text-md-end">{{ __('mobile_number') }}</label>
+                <label for="mobile_number" class=" floatingInput fcol-md-4 col-form-label text-md-end">{{ __('Username/mobile_number') }}</label>
                 @error('mobile_number')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
