@@ -14,12 +14,12 @@
                                         aria-expanded="true">{{ carbon\carbon::now() }}
                                         <i class="mdi mdi-calendar"></i>
                                     </button>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
+                                    {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
                                         <a class="dropdown-item" href="#">January - March</a>
                                         <a class="dropdown-item" href="#">March - June</a>
                                         <a class="dropdown-item" href="#">June - August</a>
                                         <a class="dropdown-item" href="#">August - November</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                         <a href={{url('/detail')}}>  <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
                             <div class="card card-light-blue">
                                 <div class="card-body">
-                                    <p class="mb-4">checkinout_detail</p>
+                                    <p class="mb-4">checkin checkout detail</p>
                                     <p class="fs-30 mb-2"></p>
                                     <p></p>
                                 </div>
