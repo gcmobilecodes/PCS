@@ -154,7 +154,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('/detail')}}">
                         <i class="icon-grid menu-icon"></i>
-                        <span class="menu-title">Ckeckin Checkout Detail</span>
+                        <span class="menu-title">Checkin Checkout Detail</span>
                     </a>
                 </li>
             </ul>
