@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        <h4>Checkin_out_list</h4>
+        <h4>Checkin Checkout list</h4>
 
         <table class="table table-bordered data-table">
             <thead>
