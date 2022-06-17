@@ -49,7 +49,7 @@
                 <div class="col-md-6 grid-margin transparent">
                     <div class="row">
 
-                        <a href=#><div class="col-md-6 mb-4 stretch-card transparent">
+                        <a href={{route('users.index')}}><div class="col-md-6 mb-4 stretch-card transparent">
                              <div class="card card-dark-blue">
                                 <div class="card-body">
                                    <p class="mb-4">Users</p>
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <a href=#>  <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+                        <a href={{url('/detail')}}>  <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
                             <div class="card card-light-blue">
                                 <div class="card-body">
                                     <p class="mb-4">checkinout_detail</p>
