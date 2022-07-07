@@ -15,4 +15,5 @@ class Checkin extends Model
         'checkin_time'
 
     ];
+
 }

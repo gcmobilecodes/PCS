@@ -72,3 +72,47 @@ element.style {
 .card.card-light-blue {
     background-color: green !important;
 }
+.btn_height{
+    height: 40px !important;
+}
+.control1
+{
+    width:250px !important;
+    margin-bottom: 20px ;
+}
+.page-body-wrapper {
+    min-height: calc(100vh - 60px);
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 60px;
+}
+.pages_body{
+    padding-top: 0px !important;
+}
+
+.control1
+{
+    width:250px !important;
+    margin-bottom: 20px ;
+}
+.page-body-wrapper {
+    min-height: calc(100vh - 60px);
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 60px;
+}
+.pages_body{
+    padding-top: 0px !important;
+}
+
+.delete-modal{
+    margin-top:2px;
+}

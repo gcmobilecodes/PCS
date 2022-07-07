@@ -42,6 +42,11 @@ Route::get('/service_provider_detail',[Checkincheckout_detailController::class, 
 Route::post('/delete/service_provider',[Checkincheckout_detailController::class, 'delete_service_provider'])->name(' admin.service_provider.delete');
 Route::post('/service_providers',[Checkincheckout_detailController::class, 'service_providerss'])->name('admin.service_providers');
 Route::post('/service/providerd',[Checkincheckout_detailController::class, 'servicesproviders'])->name('admin.serviceProvider');
+Route::get('/dates_history_search',[Checkincheckout_detailController::class, 'login_history_search'])->name('admin.login_history_search');
+Route::get('/datessearch',[Checkincheckout_detailController::class, 'datepicker'])->name('datepicker');
+Route::get('/dates_history_search',[Checkincheckout_detailController::class, 'login_history_search'])->name('admin.login_history_search');
+// Route::get('/datessearch',[Checkincheckout_detailController::class, 'datepicker'])->name('datepicker');
+Route::get('/datepicker',[Checkincheckout_detailController::class, 'datePickers'])->name('datepickers');
 Route::get('link',function(){
     Artisan::call('storage:link');
     });

@@ -2,7 +2,9 @@
 @extends('Admin.layout.main')
 @section('content')
 
-
+<link rel="stylesheet" href="{{ asset('assets/cs/style2.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/>
 
 <div class="container ">
     <h4>Users List</h4>
@@ -81,7 +83,7 @@
     });
 
     $(document).on("click", "#category_delete", function(e) {
-        var category_id = $('#category_id').val();
+        var category_id = $('#category_id').data('id');
         $.ajax({
             type: 'POST',
             url: '{{ url('/delete/users') }}',
@@ -105,6 +107,7 @@
         $('#editCategory').modal('hide');
 
     });
+
 </script>
   @endsection
 

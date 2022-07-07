@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Checkin;
+use App\Models\Checkinckeckout;
 use App\Models\Checkinout;
 use App\Models\Checkout;
 use App\Models\Detail;
@@ -16,7 +17,27 @@ use Illuminate\Support\Facades\DB;
 class DetailsController extends Controller
 {
 
+public function checkiusers(Request $request){
+    $id = Auth::id();
+    $users = new Checkinckeckout();
 
+    $users->user_id =$id;
+    $users->Restaurant_name = $request->Restaurant_name;
+
+    $users->date = $request->date;
+
+    $users->checkin_time = $request->checkin_time;
+    $users->checkout_time = $request->checkout_time;
+    $users->status=$request->status;
+
+    $users->save();
+
+    if ($users != null) {
+        return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
+    }
+
+    return response()->json(['statusCode' => 400, 'message' => 'Please check your data!'], 400);
+}
 
 
         public function getcheckin(Request $request)
@@ -24,6 +45,8 @@ class DetailsController extends Controller
         //  $id = Auth::id();
 
            $users = Checkin::where('id', $request->id)->get();
+
+        //    $users = Checkinckeckout::where('status', 1)->get();
 
            return response()->json(['statusCode' => 200, 'message' => 'Get user checkindetail successfully', 'data' => $users], 200);
 
@@ -35,14 +58,28 @@ public function checkinoutdetail(request $request){
 
     // $id = Auth::id();
 
-    $users=User::with('getCheckinDetail','getCheckoutDetail')->where('id',$request->id)->get();
+    // $users=User::with('getCheckinDetail','getCheckoutDetail')->where('id',$request->id)->get();
+    // return response()->json(['statusCode' => 200, 'message' => 'Get user checkindetail successfully', 'data' => $users], 200);
+//checkin_detail
+    $users=User::with(['getCheckinoutDetail'=>function($q){
+        $q->where('status','=',1);
+    }])->get();
+
+//checkout detail
+
+//  $users=User::with(['getCheckinoutDetail'=>function($q){
+//         $q->where('status','=',2);
+//     }])->get();
+
     return response()->json(['statusCode' => 200, 'message' => 'Get user checkindetail successfully', 'data' => $users], 200);
+
+
+
+
 
 }
 
-
-
- public function checkdetailbyDate(request $request){
+public function checkdetailbyDate(request $request){
     // $now = Carbon::now();
 
     $history = Checkout:: where('id',$request->id)->where('date', $request->date)
@@ -107,6 +144,14 @@ public function checkin (Request $request )
     }
 
     return response()->json(['statusCode' => 400, 'message' => 'Please check your data!'], 400);
+    }
+
+    public function getcheckout(Request $request){
+        $users = Checkinckeckout::where('status', 2)->get();
+
+        return response()->json(['statusCode' => 200, 'message' => 'Get user checkindetail successfully', 'data' => $users], 200);
+
+
     }
 
 

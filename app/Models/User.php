@@ -33,13 +33,16 @@ class User extends Authenticatable
 
     function getCheckinDetail()
     {
-        return $this->hasOne(Checkin::class);
+        return $this->belongsTo(Checkin::class, 'id', 'user_id');
     }
     function getCheckoutDetail()
     {
-        return $this->hasOne(Checkout::class);
+        return $this->belongsTo(Checkout::class , 'id', 'user_id');
     }
-
+    function getCheckinoutDetail()
+    {
+        return $this->hasOne(Checkinckeckout::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

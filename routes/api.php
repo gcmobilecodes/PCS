@@ -42,6 +42,8 @@ Route::get('history', [DetailsController::class, 'checkdetailbyDate']);
 
 Route::get('checkdate', [DetailsController::class, 'CheckdetailNow']);
 
+Route::post('checkinsss', [DetailsController::class, 'checkiusers']);
+Route::get('get_checkout', [DetailsController::class, 'getcheckout']);
 
 
 
