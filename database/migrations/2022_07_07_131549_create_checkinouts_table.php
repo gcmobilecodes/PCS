@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('Restaurant_name');
             $table->date('date');
             $table->time('checkin_time');
-            $table->time('checkout_time');
+            $table->time('checkout_time')->nullable();
             $table->integer('status');
             $table->timestamps();
         });
