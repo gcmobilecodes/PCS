@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('password');
             $table->integer('employee_id');
             $table->integer('user_type');
-            $table->integer('device_type');
-            $table->string('device_token');
+            $table->integer('device_type')->nullable();
+            $table->string('device_token')->nullable();
             $table->boolean('verify_otp')->nullable();
             $table->rememberToken();
             $table->timestamps();
