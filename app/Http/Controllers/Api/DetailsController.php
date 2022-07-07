@@ -61,9 +61,10 @@ public function checkinoutdetail(request $request){
     // $users=User::with('getCheckinDetail','getCheckoutDetail')->where('id',$request->id)->get();
     // return response()->json(['statusCode' => 200, 'message' => 'Get user checkindetail successfully', 'data' => $users], 200);
 //checkin_detail
-    $users=User::with(['getCheckinoutDetail'=>function($q){
+    $users=User::where('id',$request->id)->with(['getCheckinoutDetail'=>function($q){
         $q->where('status','=',1);
     }])->get();
+
 
 //checkout detail
 
@@ -72,6 +73,28 @@ public function checkinoutdetail(request $request){
 //     }])->get();
 
     return response()->json(['statusCode' => 200, 'message' => 'Get user checkindetail successfully', 'data' => $users], 200);
+
+
+
+
+
+}
+
+public function checkoutdetail(request $request){
+
+
+    $users=User::where('id',$request->id)->with(['getCheckinoutDetail'=>function($q){
+        $q->where('status','=',2);
+    }])->get();
+
+
+//checkout detail
+
+//  $users=User::with(['getCheckinoutDetail'=>function($q){
+//         $q->where('status','=',2);
+//     }])->get();
+
+    return response()->json(['statusCode' => 200, 'message' => 'Get user checkoutdetail successfully', 'data' => $users], 200);
 
 
 
@@ -147,7 +170,7 @@ public function checkin (Request $request )
     }
 
     public function getcheckout(Request $request){
-        $users = Checkinckeckout::where('status', 2)->get();
+        $users = Checkinckeckout::get();
 
         return response()->json(['statusCode' => 200, 'message' => 'Get user checkindetail successfully', 'data' => $users], 200);
 
