@@ -105,7 +105,7 @@ public function checkoutdetail(request $request){
 public function checkdetailbyDate(request $request){
     // $now = Carbon::now();
 
-    $history = Checkinout:: where('id',$request->id)->where('date', $request->date)
+    $history = Checkinckeckout:: where('id',$request->id)->where('date', $request->date)
 
                             ->get();
 //  $history=User::with('getCheckinDetail','getCheckoutDetail')->where('date', $request->date)->get();
