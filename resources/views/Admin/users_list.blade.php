@@ -83,7 +83,7 @@
     });
 
     $(document).on("click", "#category_delete", function(e) {
-        var category_id = $('#category_id').data('id');
+        var category_id = $('#category_id').val();
         $.ajax({
             type: 'POST',
             url: '{{ url('/delete/users') }}',
