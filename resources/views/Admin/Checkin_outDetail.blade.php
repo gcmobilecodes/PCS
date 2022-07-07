@@ -158,7 +158,7 @@ function dateFilter(){
 });
 
 $(document).on("click", "#category_delete1", function(e) {
-     var service_provider_id = $('#category_id').data('id');
+     var service_provider_id = $('#category_id').val();
     $.ajax({
         type: 'POST',
         url: '{{ url('/delete/service_provider') }}',
