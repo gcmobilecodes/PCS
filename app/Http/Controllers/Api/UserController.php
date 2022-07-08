@@ -66,7 +66,7 @@ class UserController extends Controller
     }
     public function logout(Request $request)
   {
-        $id = Auth::user()->id;
+        $id = Auth::id();
         if (Auth::check()) {
          User::where('id', $id)->update(['device_token' => 1]);
             Auth::user()->tokens()->delete();
@@ -74,6 +74,9 @@ class UserController extends Controller
         } else {
 return response()->json(['statusCode' => 400, 'message' => 'Already   logout'], 400);
 
+
         }
+
+
     }
 }
