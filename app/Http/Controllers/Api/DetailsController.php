@@ -19,6 +19,7 @@ class DetailsController extends Controller
 
 public function checkiusers(Request $request){
     $id = Auth::id();
+
     $users = new Checkinckeckout();
 
     $users->user_id =$id;

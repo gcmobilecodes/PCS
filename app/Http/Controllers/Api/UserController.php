@@ -44,6 +44,7 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $id  =Auth::id();
+
         $users = User::find($id);
         $users->name              = isset($request->name) && !empty($request->name) ? $request->name : $users->name;
         $users->mobile_number  =  isset($request->mobile_number) && !empty($request->mobile_number) ? $request->mobile_number : $users->mobile_number;
@@ -64,9 +65,10 @@ class UserController extends Controller
             return response()->json(['statusCode' => 400, 'message' => 'update operation  failed '], 400);
         }
     }
-    public function logout(Request $request)
+    public function logout()
   {
-        $id = Auth::id();
+    $id = Auth::User()->id;
+
         if (Auth::check()) {
          User::where('id', $id)->update(['device_token' => 1]);
             Auth::user()->tokens()->delete();

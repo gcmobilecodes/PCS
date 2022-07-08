@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login', [UserController::class, 'login']);
 Route::post('/register', [RegisterController::class, 'register']);
-Route::post('/logout', [UserController::class, 'logout']);
+
 
 Route::group(['middleware' => 'auth:sanctum'], function(){
 
@@ -48,7 +48,7 @@ Route::get('checkdate', [DetailsController::class, 'CheckdetailNow']);
 Route::post('checkinsss', [DetailsController::class, 'checkiusers']);
 Route::get('get_checkout', [DetailsController::class, 'getcheckout']);
 
-
+Route::post('/logout', [UserController::class, 'logout']);
 
 
 });
