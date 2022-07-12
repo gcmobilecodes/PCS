@@ -46,7 +46,7 @@ if ($users != null) {
         return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
     }
 
-    return response()->json(['statusCode' => 400, 'message' => 'Please check your data!','data'=>[]], 400);
+    return response()->json(['statusCode' => 400, 'message' => 'Please check your data!','data'=>(object) []], 400);
     }}
 
 }
