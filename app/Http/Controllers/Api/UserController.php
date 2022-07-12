@@ -38,7 +38,7 @@ class UserController extends Controller
 
 
         } else {
-            return response()->json(['statusCode' => 400, 'message' => 'These credentials do not match our records.'], 400);
+            return response()->json(['statusCode' => 400, 'message' => 'These credentials do not match our records.','data'=>[]], 400);
         }
     }}
     public function update(Request $request)
@@ -62,7 +62,7 @@ class UserController extends Controller
         if ($result) {
             return response()->json(['statusCode' => 200, 'message' => 'User Profile  Updated  successfully',  'data' => $users], 200);
         } else {
-            return response()->json(['statusCode' => 400, 'message' => 'update operation  failed '], 400);
+            return response()->json(['statusCode' => 400, 'message' => 'update operation  failed' ,'data'=>[]], 400);
         }
     }
     public function logout()

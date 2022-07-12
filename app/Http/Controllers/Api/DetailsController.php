@@ -37,7 +37,7 @@ public function checkiusers(Request $request){
         return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
     }
 
-    return response()->json(['statusCode' => 400, 'message' => 'Please check your data!'], 400);
+    return response()->json(['statusCode' => 400, 'message' => 'Please check your data!','data'=>[]], 400);
 }
 
 
@@ -167,7 +167,7 @@ public function checkin (Request $request )
         return response()->json(['statusCode' => 200, 'message' => 'user checkout successfully', 'data' => $users], 200);
     }
 
-    return response()->json(['statusCode' => 400, 'message' => 'Please check your data!'], 400);
+    return response()->json(['statusCode' => 400, 'message' => 'Please check your data!','data'=>$users], 400);
     }
 
     public function getcheckout(Request $request){
