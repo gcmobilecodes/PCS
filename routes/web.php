@@ -58,5 +58,6 @@ Route::get('link',function(){
 Log::channel('customlog')->info('this is my custom log file ');
 dd('done');
     });
+    Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
 
 });
