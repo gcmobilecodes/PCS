@@ -40,8 +40,7 @@ class UserController extends Controller
 
                 $user['token'] = $token;
 
-                // return response()->json(['statusCode' => 200, 'message' => 'login successfully', 'data' => $user], 200);
-                return response()->json(['statusCode' => 400, 'message' => 'These credentials do not match our records.','data'=>(object) []], 400);
+                return response()->json(['statusCode' => 200, 'message' => 'login successfully', 'data' => $user], 200);
 
 
         } else {
