@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\UserlistController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,4 +51,10 @@ Route::get('/datepicker',[Checkincheckout_detailController::class, 'datePickers'
 Route::get('link',function(){
     Artisan::call('storage:link');
     });
+    Route::get('/log',function(){
+// Log::info('this is my testing log');
+Log::channel('customlog')->info('this is my custom log file ');
+dd('done');
+    });
+
 });

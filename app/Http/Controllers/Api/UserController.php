@@ -30,9 +30,6 @@ class UserController extends Controller
             'mobile_number'    => $request->mobile_number,
             'password' => $request->password
         ];
-
-
-
         if(auth()->attempt($credentials)) {
 
 
