@@ -30,16 +30,26 @@ class UserController extends Controller
             'mobile_number'    => $request->mobile_number,
             'password' => $request->password
         ];
+
+
+
         if(auth()->attempt($credentials)) {
 
+
                 $token = $user->createToken('my-app-token')->plainTextToken;
+
                 $user['token'] = $token;
-                return response()->json(['statusCode' => 200, 'message' => 'login successfully', 'data' => $user], 200);
+
+                // return response()->json(['statusCode' => 200, 'message' => 'login successfully', 'data' => $user], 200);
+                return response()->json(['statusCode' => 400, 'message' => 'These credentials do not match our records.','data'=>(object) []], 400);
 
 
         } else {
-            return response()->json(['statusCode' => 400, 'message' => 'These credentials do not match our records.','data'=>(object) []], 400);
-        }
+                  return response()->json(['statusCode' => 400, 'message' => 'These credentials do not match our records.','data'=>(object) []], 400);
+
+
+                }
+
     }}
     public function update(Request $request)
     {

@@ -42,7 +42,9 @@ class RegisterController extends Controller
         $users->profile_pic = '/storage/'.$path;
  }
         $users->save();
+
 if ($users != null) {
+
         return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
     }
 
