@@ -21,8 +21,9 @@ class UserController extends Controller
         $validate=Validator::make($request->all(),$rules);
         if($validate->fails()){
 
-         return response()->json(['statusCode' => 422, 'message'=> "please fill the required fields", 'data' =>$validate->errors()->all()] , 200);
+        //  return response()->json(['statusCode' => 422, 'message'=> "please fill the required fields", 'data' =>$validate->errors()->all()] , 200);
 
+        return response()->json(['statusCode' => 400, 'message' => 'please fill the required fields.','data'=>(object) []], 400);
 
      }else{
 
@@ -33,7 +34,7 @@ class UserController extends Controller
             'mobile_number'    => $request->mobile_number,
             'password' => $request->password
         ];
-        Log::info($request);
+        Log::info($user);
 
         if(auth()->attempt($credentials)) {
 
