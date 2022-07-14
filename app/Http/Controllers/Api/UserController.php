@@ -15,7 +15,6 @@ class UserController extends Controller
 {
     function login(Request $request)
     {
-
         $rules=array(  'mobile_number'          => 'required',
         'password'            => 'required',
        );
@@ -34,8 +33,10 @@ class UserController extends Controller
             'mobile_number'    => $request->mobile_number,
             'password' => $request->password
         ];
+        Log::info($request);
+
         if(auth()->attempt($credentials)) {
-            Log::info($user);
+
 
                 $token = $user->createToken('my-app-token')->plainTextToken;
 
