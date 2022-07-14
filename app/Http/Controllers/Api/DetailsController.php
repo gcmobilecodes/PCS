@@ -37,7 +37,7 @@ public function checkiusers(Request $request){
         return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
     }
 
-    return response()->json(['statusCode' => 400, 'message' => 'Please check your data!','data'=>[]], 200);
+    return response()->json(['statusCode' => 400, 'message' => 'Please check your data!', 'data' => (object) []], 200);
 }
 
 
@@ -114,7 +114,7 @@ public function checkdetailbyDate(request $request){
                             }
                             else {
 
-                                return response()->json(['statusCode' => 400, 'message' => 'null', 'data' => (object) []], 200);
+                                return response()->json(['statusCode' => 400, 'message' => ' There is  no   checkin now   ', 'data' => (object) []], 200);
 
 
 
