@@ -49,11 +49,9 @@ class UserController extends Controller
 
         } else {
 
-            $token = $user->createToken('my-app-token')->plainTextToken;
 
-            $user['token'] = $token;
 
-            return response()->json(['statusCode' => 200, 'message' => 'login successfully', 'data' => $user], 200);
+            return response()->json(['statusCode' => 400, 'message' => 'Credential are not correct', 'data' => (object) []], 200);
 
                 //  Log::info("error");
                 //   return response()->json(['statusCode' => 400, 'message' => 'These credentials do not match our records.','data'=>(object) []], 400);
