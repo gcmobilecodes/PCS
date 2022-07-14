@@ -40,7 +40,7 @@ Route::get('check_out', [DetailsController::class, 'checkoutdetail']);
 // Route::get('checkout_detail', [DetailsController::class, 'checkoutdetail']);
 Route::post('checkin', [DetailsController::class, 'checkin']);
 Route::post('checkout', [DetailsController::class, 'checkout']);
-Route::get('history', [DetailsController::class, 'checkdetailbyDate']);
+Route::post('history', [DetailsController::class, 'checkdetailbyDate']);
 
 
 Route::get('checkdate', [DetailsController::class, 'CheckdetailNow']);

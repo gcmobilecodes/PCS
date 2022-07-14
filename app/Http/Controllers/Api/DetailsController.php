@@ -104,13 +104,23 @@ public function checkoutdetail(request $request){
 }
 
 public function checkdetailbyDate(request $request){
-    // $now = Carbon::now();
 
     $history = Checkinckeckout:: where('user_id',$request->user_id)->where('date', $request->date)->where('status', $request->status)
 
-                            ->get();
-//  $history=User::with('getCheckinDetail','getCheckoutDetail')->where('date', $request->date)->get();
-    return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully', 'data' => $history], 200);
+                            ->first();
+                    if ($history != null) {
+
+                                return response()->json(['statusCode' => 200, 'message' => 'get history successfully', 'data' => $history], 200);
+                            }
+                            else {
+
+                                return response()->json(['statusCode' => 400, 'message' => 'null', 'data' => (object) []], 200);
+
+
+
+                                      }
+
+    // return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully', 'data' => $history], 200);
 
 }
     public function CheckdetailNow(request $request){
