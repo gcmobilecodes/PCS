@@ -21,9 +21,8 @@ class UserController extends Controller
         $validate=Validator::make($request->all(),$rules);
         if($validate->fails()){
 
-        //  return response()->json(['statusCode' => 422, 'message'=> "please fill the required fields", 'data' =>$validate->errors()->all()] , 200);
 
-        return response()->json(['statusCode' => 400, 'message' => 'please fill the required fields.','data'=>(object) []], 400);
+        return response()->json(['statusCode' => 400, 'message' => 'please fill the required fields.','data'=>(object) []], 200);
 
      }else{
 
@@ -49,12 +48,8 @@ class UserController extends Controller
 
         } else {
 
+          return response()->json(['statusCode' => 400, 'message' => 'Credential are not correct', 'data' => (object) []], 200);
 
-
-            return response()->json(['statusCode' => 400, 'message' => 'Credential are not correct', 'data' => (object) []], 200);
-
-                //  Log::info("error");
-                //   return response()->json(['statusCode' => 400, 'message' => 'These credentials do not match our records.','data'=>(object) []], 400);
 
 
                 }
@@ -82,7 +77,7 @@ class UserController extends Controller
         if ($result) {
             return response()->json(['statusCode' => 200, 'message' => 'User Profile  Updated  successfully',  'data' => $users], 200);
         } else {
-            return response()->json(['statusCode' => 400, 'message' => 'update operation  failed' ,'data'=>(object) []], 400);
+            return response()->json(['statusCode' => 400, 'message' => 'update operation  failed' ,'data'=>(object) []], 200);
         }
     }
     public function logout()
@@ -94,7 +89,7 @@ class UserController extends Controller
             Auth::user()->tokens()->delete();
             return response()->json(['statusCode' => 200, 'message' => 'User logout successfully.'], 200);
         } else {
-return response()->json(['statusCode' => 400, 'message' => 'Already   logout'], 400);
+return response()->json(['statusCode' => 400, 'message' => 'Already   logout'], 200);
 
 
         }

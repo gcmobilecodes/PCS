@@ -29,7 +29,7 @@ class RegisterController extends Controller
         $users->employee_id=$request->employee_id;
         $users->user_type=$request->user_type;
 
-       
+
         $users->password = Hash::make($request->password);
         $users->device_type = $request->device_type;
         $users->device_token = $request->device_token;
@@ -50,7 +50,7 @@ if ($users != null) {
         return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
     }
 
-    return response()->json(['statusCode' => 400, 'message' => 'Please check your data!','data'=>(object) []], 400);
+    return response()->json(['statusCode' => 400, 'message' => 'Please check your data!','data'=>(object) []], 200);
     }}
 
 }
