@@ -34,9 +34,10 @@ class UserController extends Controller
             'mobile_number'    => $request->mobile_number,
             'password' => $request->password
         ];
-        Log::info($user);
+
 
         if(auth()->attempt($credentials)) {
+            Log::info($user);
 
 
                 $token = $user->createToken('my-app-token')->plainTextToken;
@@ -47,7 +48,15 @@ class UserController extends Controller
 
 
         } else {
-                  return response()->json(['statusCode' => 400, 'message' => 'These credentials do not match our records.','data'=>(object) []], 400);
+
+            $token = $user->createToken('my-app-token')->plainTextToken;
+
+            $user['token'] = $token;
+
+            return response()->json(['statusCode' => 200, 'message' => 'login successfully', 'data' => $user], 200);
+
+                //  Log::info("error");
+                //   return response()->json(['statusCode' => 400, 'message' => 'These credentials do not match our records.','data'=>(object) []], 400);
 
 
                 }
