@@ -67,12 +67,6 @@ public function checkinoutdetail(request $request){
     }])->get();
 
 
-//checkout detail
-
-//  $users=User::with(['getCheckinoutDetail'=>function($q){
-//         $q->where('status','=',2);
-//     }])->get();
-
     return response()->json(['statusCode' => 200, 'message' => 'Get user checkindetail successfully', 'data' => $users], 200);
 
 
@@ -89,11 +83,6 @@ public function checkoutdetail(request $request){
     }])->get();
 
 
-//checkout detail
-
-//  $users=User::with(['getCheckinoutDetail'=>function($q){
-//         $q->where('status','=',2);
-//     }])->get();
 
     return response()->json(['statusCode' => 200, 'message' => 'Get user checkoutdetail successfully', 'data' => $users], 200);
 

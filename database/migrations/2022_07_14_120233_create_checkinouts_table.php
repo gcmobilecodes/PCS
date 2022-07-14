@@ -21,8 +21,12 @@ return new class extends Migration
             $table->date('date');
             $table->time('checkin_time');
             $table->time('checkout_time')->nullable();
+            $table->string('lat');
+            $table->string('long');
             $table->integer('status');
+
             $table->timestamps();
+
         });
     }
 
