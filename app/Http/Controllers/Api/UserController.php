@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -25,13 +26,16 @@ class UserController extends Controller
 
 
      }else{
+
+
         $user = User::where('mobile_number', $request->mobile_number)->first();
+
         $credentials = [
             'mobile_number'    => $request->mobile_number,
             'password' => $request->password
         ];
         if(auth()->attempt($credentials)) {
-
+            Log::info($user);
 
                 $token = $user->createToken('my-app-token')->plainTextToken;
 

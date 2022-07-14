@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
     public function register(Request $request){
+
         $rules=array(
         'name' => 'required|string',
         'password' => 'required');
@@ -27,7 +29,7 @@ class RegisterController extends Controller
         $users->employee_id=$request->employee_id;
         $users->user_type=$request->user_type;
 
-
+       
         $users->password = Hash::make($request->password);
         $users->device_type = $request->device_type;
         $users->device_token = $request->device_token;
