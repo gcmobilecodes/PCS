@@ -58,7 +58,7 @@ class DetailsController extends Controller
 public function checkinoutdetail(request $request){
 
 
-    $users=User::where('id',$request->id)->with(['getCheckinoutDetail'=>function($q){
+    $users=User::where('id',$request->user_id)->with(['getCheckinoutDetail'=>function($q){
         $q->where('status','=',1);
     }])->get();
 
@@ -90,7 +90,7 @@ public function checkoutdetail(request $request){
 
 public function checkdetailbyDate(request $request){
 
-    $history = Checkinckeckout:: where('user_id',$request->user_id)->where('date', $request->date)
+    $history = Checkinckeckout:: where('user_id',$request->user_id)->where('date', $request->date)->where('status', $request->status)
 
                             ->first();
                     if ($history != null) {
