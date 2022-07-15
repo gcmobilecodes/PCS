@@ -19,7 +19,6 @@ class DetailsController extends Controller
 
 public function checkiusers(Request $request){
     $id = Auth::id();
-
     $users = new Checkinckeckout();
 
     $users->user_id =$id;
@@ -29,8 +28,6 @@ public function checkiusers(Request $request){
 
     $users->checkin_time = $request->checkin_time;
     $users->checkout_time = $request->checkout_time;
-    $users->lat = $request->lat;
-    $users->long = $request->long;
     $users->status=$request->status;
 
     $users->save();
