@@ -17,27 +17,6 @@ use Illuminate\Support\Facades\DB;
 class DetailsController extends Controller
 {
 
-public function checkiusers(Request $request){
-    $id = Auth::id();
-    $users = new Checkinckeckout();
-
-    $users->user_id =$id;
-    $users->Restaurant_name = $request->Restaurant_name;
-
-    $users->date = $request->date;
-
-    $users->checkin_time = $request->checkin_time;
-    $users->checkout_time = $request->checkout_time;
-    $users->status=$request->status;
-
-    $users->save();
-
-    if ($users != null) {
-        return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
-    }
-
-    return response()->json(['statusCode' => 400, 'message' => 'Please check your data!', 'data' => (object) []], 200);
-}
 
  public function checkinUserData(request $request){
     $id = Auth::id();
@@ -78,11 +57,7 @@ public function checkiusers(Request $request){
 
 public function checkinoutdetail(request $request){
 
-    // $id = Auth::id();
 
-    // $users=User::with('getCheckinDetail','getCheckoutDetail')->where('id',$request->id)->get();
-    // return response()->json(['statusCode' => 200, 'message' => 'Get user checkindetail successfully', 'data' => $users], 200);
-//checkin_detail
     $users=User::where('id',$request->id)->with(['getCheckinoutDetail'=>function($q){
         $q->where('status','=',1);
     }])->get();
@@ -115,7 +90,7 @@ public function checkoutdetail(request $request){
 
 public function checkdetailbyDate(request $request){
 
-    $history = Checkinckeckout:: where('user_id',$request->user_id)->where('date', $request->date)->where('status', $request->status)
+    $history = Checkinckeckout:: where('user_id',$request->user_id)->where('date', $request->date)
 
                             ->first();
                     if ($history != null) {
