@@ -29,6 +29,8 @@ public function checkiusers(Request $request){
 
     $users->checkin_time = $request->checkin_time;
     $users->checkout_time = $request->checkout_time;
+    $users->lat = $request->lat;
+    $users->long = $request->long;
     $users->status=$request->status;
 
     $users->save();

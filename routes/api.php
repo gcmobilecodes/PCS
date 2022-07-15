@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\DetailsController;
+use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -41,13 +42,10 @@ Route::get('check_out', [DetailsController::class, 'checkoutdetail']);
 Route::post('checkin', [DetailsController::class, 'checkin']);
 Route::post('checkout', [DetailsController::class, 'checkout']);
 Route::post('history', [DetailsController::class, 'checkdetailbyDate']);
-
-
 Route::get('checkdate', [DetailsController::class, 'CheckdetailNow']);
-
 Route::post('checkinsss', [DetailsController::class, 'checkiusers']);
 Route::get('get_checkout', [DetailsController::class, 'getcheckout']);
-
+Route::get('near-by-places', [LocationController::class, 'index']);
 Route::post('/logout', [UserController::class, 'logout']);
 
 
