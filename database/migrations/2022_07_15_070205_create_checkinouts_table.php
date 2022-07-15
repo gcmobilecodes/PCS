@@ -20,10 +20,8 @@ return new class extends Migration
             $table->date('date');
             $table->time('checkin_time');
             $table->time('checkout_time')->nullable();
-
-            $table->integer('status');
-
-            $table->timestamps();
+             $table->integer('status');
+             $table->timestamps();
         });
     }
 

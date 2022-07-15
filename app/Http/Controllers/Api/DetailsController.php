@@ -39,6 +39,28 @@ public function checkiusers(Request $request){
     return response()->json(['statusCode' => 400, 'message' => 'Please check your data!', 'data' => (object) []], 200);
 }
 
+ public function checkinUserData(request $request){
+    $id = Auth::id();
+    $users = new Checkinckeckout();
+
+    $users->user_id =$id;
+    $users->Restaurant_name = $request->Restaurant_name;
+
+    $users->date = $request->date;
+
+    $users->checkin_time = $request->checkin_time;
+    $users->checkout_time = $request->checkout_time;
+    $users->status=$request->status;
+
+    $users->save();
+
+    if ($users != null) {
+        return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
+    }
+
+    return response()->json(['statusCode' => 400, 'message' => 'Please check your data!', 'data' => (object) []], 200);
+}
+
 
         public function getcheckin(Request $request)
         {

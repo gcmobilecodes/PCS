@@ -46,6 +46,8 @@ Route::get('checkdate', [DetailsController::class, 'CheckdetailNow']);
 Route::post('checkinsss', [DetailsController::class, 'checkiusers']);
 Route::get('get_checkout', [DetailsController::class, 'getcheckout']);
 Route::get('near-by-places', [LocationController::class, 'index']);
+Route::post('checkinuser', [DetailsController::class, 'checkinUserData']);
+
 Route::post('/logout', [UserController::class, 'logout']);
 
 
