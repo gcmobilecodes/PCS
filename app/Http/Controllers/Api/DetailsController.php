@@ -109,13 +109,16 @@ public function checkdetailbyDate(request $request){
     $checkinUsers=Checkinckeckout::whereStatus(1)->filter($request)->where('user_id',auth()->user()->id)->first();
     $checkoutUsers=Checkinckeckout::whereStatus(2)->filter($request)->where('user_id',auth()->user()->id)->first();
 
-
-
+if($checkinUsers && $checkoutUsers!=null){
     return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully','checkin_user'=>$checkinUsers,'checkout_user' => $checkoutUsers], 200);
 
-//     $history = Checkinckeckout:: where('user_id',$request->user_id)->where('date', $request->date)->where('status', $request->status)
+}
 
-//                             ->first();
+    return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully','checkin_user'=>(object) [],'checkout_user' => (object) []], 200);
+
+    // $history = Checkinckeckout:: where('user_id',$request->user_id)->where('date', $request->date)->where('status', $request->status)
+
+    //                         ->first();
 
 
     //                 if ($history != null) {
