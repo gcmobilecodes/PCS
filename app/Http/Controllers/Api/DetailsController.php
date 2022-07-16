@@ -90,41 +90,45 @@ public function checkoutdetail(request $request){
 
 public function checkdetailbyDate(request $request){
 
-    $history = Checkinckeckout:: where('user_id',$request->user_id)->where('date', $request->date)
+//     $history = Checkinckeckout:: where('user_id',$request->user_id)->where('date', $request->date)->where('status', $request->status)
 
-                            ->first();
+//     ->first();
 
-if($history->status==1){
-    dd($history->status==1);
-    DB::table('checkinouts')->update(['status', 1]);
-    return response()->json(['statusCode' => 200, 'message' => 'get history successfully', 'data' => $history], 200);
+// if($history->status==1){
 
-}elseif($history->status==1){
-    DB::table('checkinouts')->update(['status', 2]);
-    return response()->json(['statusCode' => 200, 'message' => 'get history successfully', 'data' => $history], 200);
+// $history->update(['status', 1]);
+//     return response()->json(['statusCode' => 200, 'message' => 'get history successfully', 'data' => $history], 200);
 
-}
+// }elseif($history->status==2){
+//     $history->update(['status', 2]);
+//     return response()->json(['statusCode' => 200, 'message' => 'get history successfully', 'data' => $history], 200);
+
+// }
 
 
-
-// $users = User::find($id);
-// $users->name              = isset($request->name) && !empty($request->name) ? $request->name : $users->name;
-// $users->mobile_number  =  isset($request->mobile_number) && !empty($request->mobile_number) ? $request->mobile_number : $users->mobile_number;
-// $users->employee_id  =  isset($request->employee_id) && !empty($request->employee_id) ? $request->employee_id : $users->employee_id;
-
-// $users->profile_pic             =  isset($request->profile_pic) && !empty($request->profile_pic) ? $request->profile_pic : $users->profile_pic;
-
-                    // if ($history != null) {
-
-                    //             return response()->json(['statusCode' => 200, 'message' => 'get history successfully', 'data' => $history], 200);
-                    //         }
-                    //         else {
-
-                    //             return response()->json(['statusCode' => 400, 'message' => ' There is  no   checkin now   ', 'data' => (object) []], 200);
+    $checkinUsers=Checkinckeckout::whereStatus(1)->filter($request)->where('user_id',auth()->user()->id)->first();
+    $checkoutUsers=Checkinckeckout::whereStatus(2)->filter($request)->where('user_id',auth()->user()->id)->first();
 
 
 
-                    //                   }
+    return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully','checkin_user'=>$checkinUsers,'checkout_user' => $checkoutUsers], 200);
+
+//     $history = Checkinckeckout:: where('user_id',$request->user_id)->where('date', $request->date)->where('status', $request->status)
+
+//                             ->first();
+
+
+    //                 if ($history != null) {
+
+    //                             return response()->json(['statusCode' => 200, 'message' => 'get history successfully', 'data' => $history], 200);
+    //                         }
+    //                         else {
+
+    //                             return response()->json(['statusCode' => 400, 'message' => ' There is  no   checkin now   ', 'data' => (object) []], 200);
+
+
+
+    //                                   }
 
     // return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully', 'data' => $history], 200);
 
