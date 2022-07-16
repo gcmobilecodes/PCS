@@ -67,12 +67,24 @@ class UserController extends Controller
 
         $users->profile_pic             =  isset($request->profile_pic) && !empty($request->profile_pic) ? $request->profile_pic : $users->profile_pic;
 
-        if ($request->profile_pic) {
-            $profile = $request->file('profile_pic')->getClientOriginalName();
-            $address =  $request->file('profile_pic')->store('public/images');
-            $users->profile_pic = $address;
+        // if ($request->profile_pic) {
+        //     $profile = $request->file('profile_pic')->getClientOriginalName();
+        //     $address =  $request->file('profile_pic')->store('public/images');
+        //     $users->profile_pic = $address;
 
-        }
+
+
+        // }
+        if ($request->file('profile_pic')) {
+            $imagePath = $request->file('profile_pic');
+            $imageName = $imagePath->getClientOriginalName();
+
+            $path = $request->file('profile_pic')->storeAs('uploads', $imageName, 'public');
+
+
+        $users->profile_pic = $imageName;
+        $users->profile_pic = '/storage/'.$path;
+ }
         $result = $users->save();
         if ($result) {
             return response()->json(['statusCode' => 200, 'message' => 'User Profile  Updated  successfully',  'data' => $users], 200);
@@ -93,6 +105,14 @@ return response()->json(['statusCode' => 400, 'message' => 'Already   logout'], 
 
 
         }
+
+    // $checkinUsers=Checkinckeckout::whereStatus(1)->filter($request)->where('user_id',auth()->user()->id)->first();
+    // $checkoutUsers=Checkinckeckout::whereStatus(2)->filter($request)->where('user_id',auth()->user()->id)->first();
+
+
+
+    // return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully','checkin_user'=>$checkinUsers,'checkout_user' => $checkoutUsers], 200);
+
 
 
     }
