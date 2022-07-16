@@ -90,8 +90,11 @@ public function checkoutdetail(request $request){
 
 public function checkdetailbyDate(request $request){
 
-    $checkinUsers=Checkinckeckout::whereStatus(1)->filter($request)->where('id',auth()->user()->id)->first();
-    $checkoutUsers=Checkinckeckout::whereStatus(2)->filter($request)->where('id',auth()->user()->id)->first();
+    $checkinUsers=Checkinckeckout::whereStatus(1)->filter($request)->where('user_id',auth()->user()->id)->get();
+    $checkoutUsers=Checkinckeckout::whereStatus(2)->filter($request)->where('user_id',auth()->user()->id)->get();
+
+
+
     return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully','checkin_user'=>$checkinUsers,'checkout_user' => $checkoutUsers], 200);
 
 
