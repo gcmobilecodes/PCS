@@ -45,7 +45,7 @@ class DetailsController extends Controller
         {
         //  $id = Auth::id();
 
-           $users = Checkin::where('id', $request->id)->get();
+           $users = Checkin::where('User_id', $request->User_id)->get();
 
         //    $users = Checkinckeckout::where('status', 1)->get();
 
@@ -90,20 +90,33 @@ public function checkoutdetail(request $request){
 
 public function checkdetailbyDate(request $request){
 
-    $history = Checkinckeckout:: where('user_id',$request->user_id)->where('date', $request->date)->where('status', $request->status)
-
-                            ->first();
-                    if ($history != null) {
-
-                                return response()->json(['statusCode' => 200, 'message' => 'get history successfully', 'data' => $history], 200);
-                            }
-                            else {
-
-                                return response()->json(['statusCode' => 400, 'message' => ' There is  no   checkin now   ', 'data' => (object) []], 200);
+    $checkinUsers=Checkinckeckout::whereStatus(1)->filter($request)->where('id',auth()->user()->id)->first();
+    $checkoutUsers=Checkinckeckout::whereStatus(2)->filter($request)->where('id',auth()->user()->id)->first();
+    return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully','checkin_user'=>$checkinUsers,'checkout_user' => $checkoutUsers], 200);
 
 
+    // $latitude = "23.033863";
+    // $longitude = "72.585022";
+    // $users = User::select("name", \DB::raw("6371 * acos(cos(radians(" . $latitude . "))
+    //         * cos(radians(latitude)) * cos(radians(longitude) - radians(" . $longitude . "))
+    //         + sin(radians(" .$latitude. ")) * sin(radians(latitude))) AS distance"))
+    //         ->having('distance', '<', 1000)
+    //         ->orderBy('distance')
+    //         ->get()->toArray();
 
-                                      }
+
+
+                    // if ($history != null) {
+
+                    //             return response()->json(['statusCode' => 200, 'message' => 'get history successfully', 'data' => $history], 200);
+                    //         }
+                    //         else {
+
+                    //             return response()->json(['statusCode' => 400, 'message' => ' There is  no   checkin now   ', 'data' => (object) []], 200);
+
+
+
+                    //                   }
 
     // return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully', 'data' => $history], 200);
 

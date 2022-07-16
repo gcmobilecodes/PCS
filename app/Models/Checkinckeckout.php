@@ -19,4 +19,10 @@ class Checkinckeckout extends Model
         'status'
 
     ];
+    function scopeFilter($query,$request){
+        if($request->date){
+            $query->where('date',$request->date);
+        }
+        return $query;
+ }
 }
