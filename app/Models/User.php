@@ -26,10 +26,8 @@ class User extends Authenticatable
         'user_type',
         'device_type',
         'device_token',
-        'status',
-
-
-    ];
+        'status'
+     ];
 
     // function getCheckinoutDetail()
     // {
@@ -38,6 +36,10 @@ class User extends Authenticatable
     function getCheckinoutDetail()
     {
         return $this->hasOne(History::class);
+    }
+    function getContactList()
+    {
+        return $this->hasOne(Contactus::class);
     }
 
     /**

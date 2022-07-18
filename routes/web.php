@@ -47,6 +47,10 @@ Route::get('/dates_history_search',[Checkincheckout_detailController::class, 'lo
 Route::get('/datessearch',[Checkincheckout_detailController::class, 'datepicker'])->name('datepicker');
 Route::get('/dates_history_search',[Checkincheckout_detailController::class, 'login_history_search'])->name('admin.login_history_search');
 Route::get('/datepicker',[Checkincheckout_detailController::class, 'datePickers'])->name('datepickers');
+Route::get('/contact_us',[Checkincheckout_detailController::class, 'Contactus'])->name('contact_us');
+
+Route::post('/delete/users',[Checkincheckout_detailController::class, 'deletecontact'])->name(' admin.deletecontact');
+
 
 
 Route::get('link',function(){

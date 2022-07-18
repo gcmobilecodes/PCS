@@ -20,7 +20,7 @@ class DetailsController extends Controller
 {
 
 
-    public function checkinUserData(request $request){
+        public function checkinUserData(request $request){
         $id = Auth::id();
 
         $user =Checkinckeckout::where('user_id',auth()->user()->id)->first();
@@ -56,19 +56,7 @@ class DetailsController extends Controller
     }
 
 
-            public function getcheckin(Request $request)
-            {
-            //  $id = Auth::id();
 
-               $users = Checkin::where('User_id', $request->User_id)->get();
-
-            //    $users = Checkinckeckout::where('status', 1)->get();
-
-               return response()->json(['statusCode' => 200, 'message' => 'Get user checkindetail successfully', 'data' => $users], 200);
-
-
-
-        }
 
     public function checkinoutdetail(request $request){
 
@@ -126,27 +114,7 @@ class DetailsController extends Controller
 
     }
 
-    public function checkin (Request $request )
-    {
-        $id = Auth::id();
-        $users = new checkin();
 
-        $users->user_id =$id;
-        $users->Restaurant_name = $request->Restaurant_name;
-
-        $users->date = $request->date;
-
-        $users->checkin_time = $request->checkin_time;
-        $users->status = 1;
-
-        $users->save();
-
-        if ($users != null) {
-            return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
-        }
-
-        return response()->json(['statusCode' => 400, 'message' => 'Please check your data!'], 200);
-        }
 
 
 
@@ -175,7 +143,7 @@ return response()->json(['statusCode' => 200, 'message' => 'Get user history suc
 
         }
 
-public function contactUs( request $request){
+   public function contactUs( request $request){
     $id = Auth::id();
     $users = new Contactus();
 
@@ -187,6 +155,13 @@ public function contactUs( request $request){
 
 }
 
+public function getdetailcontact(){
+    $data=User::where('user_type',1)->with('getContactList')
+    ->get();
+    return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $data], 200);
+
+
+}
 
 
 

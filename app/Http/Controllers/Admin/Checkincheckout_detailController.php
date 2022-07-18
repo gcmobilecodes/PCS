@@ -51,22 +51,14 @@ class Checkincheckout_detailController extends Controller
      {
       if(!empty($request->date))
       {
-      //  $data =Checkinckeckout::where('date',$request->date)
-      //    ->get();
+
 
     $data=User::where('user_type',1)->with('getCheckinoutDetail')->whereHas('getCheckinoutDetail', function ($q) use ($request) {
                                       $q->where('date','=',$request->date);
 
                               })->get();
                               return datatables()->of($data)->make(true);
-
-    // $data  =\DB::table('users')->leftjoin('checkinouts','checkinouts.user_id','=','users.id')->select('users.id','users.name','users.mobile_number','checkinouts.')->where('checkinouts.date','=',$request->date)->get();
-     // $data=User::where('user_type',1)->with(['getCheckinoutDetail'=>function($q,$request){
-    //     $q->where('date','=',$request->date);
-    // }])->get();
-
-
-      }
+}
       else
       {
         $data=User::where('user_type',1)->with('getCheckinoutDetail')
@@ -88,6 +80,25 @@ class Checkincheckout_detailController extends Controller
      ]);
 
 
+    }
+
+    public function Contactus(){
+
+            $data=User::where('user_type',1)->with('getContactList')
+            ->get();
+
+
+
+      return view('Admin.contact_us',compact('data'));
+    }
+
+    public function deletecontact(request $request){
+
+        $service_provider= User::where('id',$request->id);
+        $service_provider->delete();
+        echo "service_provider detail Deleted Successfully";
+
+        return redirect('contact_us')->with('success',"service_provider detail Deleted successfully");
     }
 
 

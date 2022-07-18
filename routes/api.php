@@ -49,6 +49,8 @@ Route::get('near-by-places', [LocationController::class, 'index']);
 Route::post('checkinuser', [DetailsController::class, 'checkinUserData']);
 Route::post('historys', [DetailsController::class, 'history']);
 Route::post('contact_us', [DetailsController::class, 'contactUs']);
+Route::get('contactUsdetail', [DetailsController::class, 'getdetailcontact']);
+
 
 
 

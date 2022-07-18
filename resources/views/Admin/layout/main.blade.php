@@ -176,6 +176,12 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                         <span class="menu-title">Checkin Checkout Detail</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/contact_us')}}">
+                        <i class="icon-grid menu-icon"></i>
+                        <span class="menu-title">contact_us</span>
+                    </a>
+                </li>
             </ul>
         </nav>
 

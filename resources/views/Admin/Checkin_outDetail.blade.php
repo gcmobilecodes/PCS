@@ -6,9 +6,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-  {{-- <link rel="stylesheet" href="/resources/demos/style.css"> --}}
 
-  {{-- <p>Date: <input type="text" id="datepicker" onchange="dateFilter();"></p> --}}
   <div class="container ">
     <h4>Checkin Checkout list</h4>
       <p>Date: <input type="text" id="datepicker" onchange="dateFilter()"></p>
@@ -17,7 +15,7 @@
 
 
 
- <input type="hidden" value="{{csrf_field()}}">
+ {{-- <input type="hidden" value="{{csrf_field()}}"> --}}
 
         <thead>
             <tr>
@@ -122,7 +120,8 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
   } );
   </script>
 
-<script>$(document).ready(function () {
+<script>
+$(document).ready(function () {
     $('#example').DataTable();
 });
 
@@ -222,10 +221,8 @@ $(document).on("click", ".edit-modal", function(e) {
                         '</p></strong></label></html>'
                     );
                     var checkindetail = data.get_checkinout_detail;
-                    // console.log(checkindetail);
-                    // if(!empty(checkindetail)){
+
                     var checkin_dt = "";
-                     // if(!empty(checkindetail)){
 
                     checkin_dt +=
                         '<label for="floatingInput"><strong><services><p>user_id&nbsp;&nbsp;: &nbsp;&nbsp ' +
