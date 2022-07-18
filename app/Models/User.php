@@ -31,17 +31,13 @@ class User extends Authenticatable
 
     ];
 
-    function getCheckinDetail()
-    {
-        return $this->belongsTo(Checkin::class, 'id', 'user_id');
-    }
-    function getCheckoutDetail()
-    {
-        return $this->belongsTo(Checkout::class , 'id', 'user_id');
-    }
+    // function getCheckinoutDetail()
+    // {
+    //     return $this->hasOne(Checkinckeckout::class);
+    // }
     function getCheckinoutDetail()
     {
-        return $this->hasOne(Checkinckeckout::class);
+        return $this->hasOne(History::class);
     }
 
     /**

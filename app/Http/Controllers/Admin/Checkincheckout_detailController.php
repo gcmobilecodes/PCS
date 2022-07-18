@@ -19,35 +19,12 @@ class Checkincheckout_detailController extends Controller
 
             $data=User::where('user_type',1)->with('getCheckinoutDetail')
             ->get();
-    //         return DataTables::of($data)
 
-
-    //         ->addIndexColumn()
-    //                 ->addColumn('date', function($row) {
-    //                     return $row->getCheckinoutDetail->date;
-    //                 })
-    //                 // ->addColumn('dates', function($row) {
-    //                 //     return $row->getcheckoutDetail->date;
-    //                 // })
-
-
-    //                 ->addColumn('action', function($row){
-    // $btn =
-    // '<div  class="btn btn-sm edit-modal"  data-id=' . $row->id .' name='.$row-> name .'> <button type="button" class="btn btn-primary" > View Details</button>
-    //                 </div> <div class="delete-modal btn  btn-sm" data-id=' . $row->id . '  id="deletecategory1" name='.$row->name.'><i class="fa fa-trash" aria-hidden="true"></i></div>';
-    // return $btn;
-    //                 })
-
-
-    //                 ->rawColumns(['date','action'])
-    //                 ->make(true);
-    //     }
 
       return view('Admin.Checkin_outDetail',compact('data'));
     }
     public function service_provider_detail(request $request){
 
-        // $service_provider = User::first();
 
         $companys=User::where('id',$request->id)->with('getCheckinDetail','getCheckoutDetail')->get();
 
@@ -68,9 +45,7 @@ class Checkincheckout_detailController extends Controller
     public function servicesproviders(Request $request)
     {
 
-        // $id= array('id' => $request->id);
-        // $companys  = User::where($users)->first();
-        // $companys=User::->with('getCheckinDetail','getCheckoutDetail')->first();
+
         $companys=User::where('id',$request->id)->with('getCheckinoutDetail')->first();
 
         return Response()->json($companys);
@@ -84,8 +59,7 @@ class Checkincheckout_detailController extends Controller
      {
       if(!empty($request->date))
       {
-      //  $data =Checkinckeckout::where('date',$request->date)
-      //    ->get();
+
 
     $data=User::where('user_type',1)->with('getCheckinoutDetail')->whereHas('getCheckinoutDetail', function ($q) use ($request) {
                                       $q->where('date','=',$request->date);
@@ -93,10 +67,6 @@ class Checkincheckout_detailController extends Controller
                               })->get();
                               return datatables()->of($data)->make(true);
 
-    // $data  =\DB::table('users')->leftjoin('checkinouts','checkinouts.user_id','=','users.id')->select('users.id','users.name','users.mobile_number','checkinouts.')->where('checkinouts.date','=',$request->date)->get();
-     // $data=User::where('user_type',1)->with(['getCheckinoutDetail'=>function($q,$request){
-    //     $q->where('date','=',$request->date);
-    // }])->get();
 
 
       }
