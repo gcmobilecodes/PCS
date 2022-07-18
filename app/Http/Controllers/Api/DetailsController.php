@@ -105,7 +105,7 @@ class DetailsController extends Controller
 
     public function checkdetailbyDate(request $request){
 
-        $history = Checkinckeckout:: where('user_id',auth()->user()->id)->where('date', $request->date)
+        $history = Checkinckeckout:: where('user_id', $request->date)->where('date', $request->date)
 
                                 ->first();
 

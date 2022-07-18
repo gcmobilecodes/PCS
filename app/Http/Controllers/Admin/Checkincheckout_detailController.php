@@ -23,15 +23,7 @@ class Checkincheckout_detailController extends Controller
 
       return view('Admin.Checkin_outDetail',compact('data'));
     }
-    public function service_provider_detail(request $request){
 
-
-        $companys=User::where('id',$request->id)->with('getCheckinDetail','getCheckoutDetail')->get();
-
-       return view ('Admin.vendors',compact('service_provider'));
-
-
-    }
 
     public function delete_service_provider(request $request){
 
@@ -59,7 +51,8 @@ class Checkincheckout_detailController extends Controller
      {
       if(!empty($request->date))
       {
-
+      //  $data =Checkinckeckout::where('date',$request->date)
+      //    ->get();
 
     $data=User::where('user_type',1)->with('getCheckinoutDetail')->whereHas('getCheckinoutDetail', function ($q) use ($request) {
                                       $q->where('date','=',$request->date);
@@ -67,6 +60,10 @@ class Checkincheckout_detailController extends Controller
                               })->get();
                               return datatables()->of($data)->make(true);
 
+    // $data  =\DB::table('users')->leftjoin('checkinouts','checkinouts.user_id','=','users.id')->select('users.id','users.name','users.mobile_number','checkinouts.')->where('checkinouts.date','=',$request->date)->get();
+     // $data=User::where('user_type',1)->with(['getCheckinoutDetail'=>function($q,$request){
+    //     $q->where('date','=',$request->date);
+    // }])->get();
 
 
       }
