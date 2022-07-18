@@ -7,6 +7,7 @@ use App\Models\Checkin;
 use App\Models\Checkinckeckout;
 use App\Models\Checkinout;
 use App\Models\Checkout;
+use App\Models\Contactus;
 use App\Models\Detail;
 use App\Models\History;
 use App\Models\User;
@@ -191,16 +192,43 @@ class DetailsController extends Controller
 
 
         }
+        public function history(request $request){
+            $history = History:: where('user_id',auth()->user()->id)->where('date', $request->date)
+
+            ->get();
 
 
-        // $latitude = "23.033863";
-        // $longitude = "72.585022";
-        // $users = User::select("name", \DB::raw("6371 * acos(cos(radians(" . $latitude . "))
-        //         * cos(radians(latitude)) * cos(radians(longitude) - radians(" . $longitude . "))
-        //         + sin(radians(" .$latitude. ")) * sin(radians(latitude))) AS distance"))
-        //         ->having('distance', '<', 1000)
-        //         ->orderBy('distance')
-        //         ->get()->toArray();
+    if ($history != null) {
+
+                return response()->json(['statusCode' => 200, 'message' => 'get history successfully', 'data' => $history], 200);
+            }
+            else {
+
+                return response()->json(['statusCode' => 400, 'message' => ' There is  no   checkin now   ', 'data' => (object) []], 200);
+
+
+
+                      }
+
+return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully', 'data' => $history], 200);
+
+
+        }
+
+public function contactUs( request $request){
+    $id = Auth::id();
+    $users = new Contactus();
+
+    $users->user_id =$id;
+    $users->Query = $request->Query;
+    $users->save();
+    return response()->json(['statusCode' => 200, 'message' => 'send Query sucessfully', 'data' => $users], 200);
+
+
+}
+
+
+
 
 
 
