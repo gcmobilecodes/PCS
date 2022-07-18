@@ -105,7 +105,7 @@ class DetailsController extends Controller
 
     public function checkdetailbyDate(request $request){
 
-        $history = Checkinckeckout:: where('user_id', $request->date)->where('date', $request->date)
+        $history = Checkinckeckout:: where('user_id',$request->user_id)->where('date', $request->date)
 
                                 ->first();
 
@@ -122,15 +122,6 @@ class DetailsController extends Controller
 
                                           }
 
-        return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully', 'data' => $history], 200);
-
-    }
-        public function CheckdetailNow(request $request){
-        // $now = Carbon::now();
-
-        $history = Checkout::whereDate('created_at',  Carbon::today())->get();
-
-        $history=User::with('getCheckinDetail','getCheckoutDetail')->whereDate('created_at',  Carbon::today())->get();
         return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully', 'data' => $history], 200);
 
     }
@@ -158,42 +149,11 @@ class DetailsController extends Controller
         }
 
 
-        public function checkout (Request $request )
-    {
-        $id = Auth::id();
-        $users = new Checkout();
-
-        $users->user_id =$id;
-        $users->Restaurant_name = $request->Restaurant_name;
-
-        $users->date = $request->date;
-
-        $users->checkin_time = $request->checkin_time;
-        $users->checkout_time = $request->checkout_time;
 
 
 
-
-        $users->status = 2;
-
-        $users->save();
-
-       if ($users != null) {
-            return response()->json(['statusCode' => 200, 'message' => 'user checkout successfully', 'data' => $users], 200);
-        }
-
-        return response()->json(['statusCode' => 400, 'message' => 'Please check your data!','data'=>$users], 200);
-        }
-
-        public function getcheckout(Request $request){
-            $users = Checkinckeckout::get();
-
-            return response()->json(['statusCode' => 200, 'message' => 'Get user checkindetail successfully', 'data' => $users], 200);
-
-
-        }
         public function history(request $request){
-            $history = History:: where('user_id',auth()->user()->id)->where('date', $request->date)
+            $history = History:: where('user_id',$request->user_id)->where('date', $request->date)
 
             ->get();
 
@@ -222,7 +182,7 @@ public function contactUs( request $request){
     $users->user_id =$id;
     $users->Query = $request->Query;
     $users->save();
-    return response()->json(['statusCode' => 200, 'message' => 'send Query sucessfully', 'data' => $users], 200);
+    return response()->json(['statusCode' => 400, 'message' => 'send Query sucessfully', 'data' => $users], 200);
 
 
 }
