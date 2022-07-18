@@ -5,25 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Checkinckeckout extends Model
+class History extends Model
 {
     use HasFactory;
-    protected $table="checkinouts";
+    protected $table="history";
     protected $fillable = [
         'user_id',
         'Restaurant_name',
         'date',
         'checkin_time',
         'checkout_time',
-        "lat",
-        "long",
-        'status'
+        'status',
+        'lat',
+        'long'
 
     ];
-    function scopeFilter($query,$request){
-        if($request->date){
-            $query->where('date',$request->date);
-        }
-        return $query;
- }
 }

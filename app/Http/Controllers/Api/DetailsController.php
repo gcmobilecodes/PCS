@@ -8,6 +8,7 @@ use App\Models\Checkinckeckout;
 use App\Models\Checkinout;
 use App\Models\Checkout;
 use App\Models\Detail;
+use App\Models\History;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -18,188 +19,189 @@ class DetailsController extends Controller
 {
 
 
- public function checkinUserData(request $request){
-    $id = Auth::id();
-    $users = new Checkinckeckout();
+    public function checkinUserData(request $request){
+        $id = Auth::id();
 
-    $users->user_id =$id;
-    $users->Restaurant_name = $request->Restaurant_name;
+        $user =Checkinckeckout::where('user_id',auth()->user()->id)->first();
 
-    $users->date = $request->date;
+        $data['user_id'] =$id;
+        $data['Restaurant_name'] = $request->Restaurant_name;
 
-    $users->checkin_time = $request->checkin_time;
-    $users->checkout_time = $request->checkout_time;
-    $users->status=$request->status;
+        $data['date'] = $request->date;
 
-    $users->save();
+        $data['checkin_time'] = $request->checkin_time;
+        $data['checkout_time'] = $request->checkout_time;
+        $data['lat'] = $request->lat;
+        $data['long'] = $request->long;
 
-    if ($users != null) {
-        return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
-    }
 
-    return response()->json(['statusCode' => 400, 'message' => 'Please check your data!', 'data' => (object) []], 200);
-}
+        $data['status']=$request->status;
+        if(!$user){
+            Checkinckeckout::create($data);
+            History::create($data);
+        }else{
+            $user->update(['status'=>$request->status]);
+            History::create($data);
+        }
 
 
-        public function getcheckin(Request $request)
-        {
-        //  $id = Auth::id();
+        if (!empty($users)) {
+            return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
+        }else{
+            return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $user], 200);
+        }
 
-           $users = Checkin::where('User_id', $request->User_id)->get();
-
-        //    $users = Checkinckeckout::where('status', 1)->get();
-
-           return response()->json(['statusCode' => 200, 'message' => 'Get user checkindetail successfully', 'data' => $users], 200);
-
-
-
-    }
-
-public function checkinoutdetail(request $request){
-
-
-    $users=User::where('id',$request->user_id)->with(['getCheckinoutDetail'=>function($q){
-        $q->where('status','=',1);
-    }])->get();
-
-
-    return response()->json(['statusCode' => 200, 'message' => 'Get user checkindetail successfully', 'data' => $users], 200);
-
-
-
-
-
-}
-
-public function checkoutdetail(request $request){
-
-
-    $users=User::where('id',$request->id)->with(['getCheckinoutDetail'=>function($q){
-        $q->where('status','=',2);
-    }])->get();
-
-
-
-    return response()->json(['statusCode' => 200, 'message' => 'Get user checkoutdetail successfully', 'data' => $users], 200);
-
-
-
-
-
-}
-
-public function checkdetailbyDate(request $request){
-
-//     $history = Checkinckeckout:: where('user_id',$request->user_id)->where('date', $request->date)->where('status', $request->status)
-
-//     ->first();
-
-// if($history->status==1){
-
-// $history->update(['status', 1]);
-//     return response()->json(['statusCode' => 200, 'message' => 'get history successfully', 'data' => $history], 200);
-
-// }elseif($history->status==2){
-//     $history->update(['status', 2]);
-//     return response()->json(['statusCode' => 200, 'message' => 'get history successfully', 'data' => $history], 200);
-
-// }
-
-
-    $checkinUsers=Checkinckeckout::whereStatus(1)->filter($request)->where('user_id',auth()->user()->id)->first();
-    $checkoutUsers=Checkinckeckout::whereStatus(2)->filter($request)->where('user_id',auth()->user()->id)->first();
-
-if($checkinUsers && $checkoutUsers!=null){
-    return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully','checkin_user'=>$checkinUsers,'checkout_user' => $checkoutUsers], 200);
-
-}
-
-    return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully','checkin_user'=>(object) [],'checkout_user' => (object) []], 200);
-
-    // $history = Checkinckeckout:: where('user_id',$request->user_id)->where('date', $request->date)->where('status', $request->status)
-
-    //                         ->first();
-
-
-    //                 if ($history != null) {
-
-    //                             return response()->json(['statusCode' => 200, 'message' => 'get history successfully', 'data' => $history], 200);
-    //                         }
-    //                         else {
-
-    //                             return response()->json(['statusCode' => 400, 'message' => ' There is  no   checkin now   ', 'data' => (object) []], 200);
-
-
-
-    //                                   }
-
-    // return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully', 'data' => $history], 200);
-
-}
-    public function CheckdetailNow(request $request){
-    // $now = Carbon::now();
-
-    $history = Checkout::whereDate('created_at',  Carbon::today())->get();
-
-    $history=User::with('getCheckinDetail','getCheckoutDetail')->whereDate('created_at',  Carbon::today())->get();
-    return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully', 'data' => $history], 200);
-
-}
-
-public function checkin (Request $request )
-{
-    $id = Auth::id();
-    $users = new checkin();
-
-    $users->user_id =$id;
-    $users->Restaurant_name = $request->Restaurant_name;
-
-    $users->date = $request->date;
-
-    $users->checkin_time = $request->checkin_time;
-    $users->status = 1;
-
-    $users->save();
-
-    if ($users != null) {
-        return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
-    }
-
-    return response()->json(['statusCode' => 400, 'message' => 'Please check your data!'], 200);
+        return response()->json(['statusCode' => 400, 'message' => 'Please check your data!', 'data' => (object) []], 200);
     }
 
 
-    public function checkout (Request $request )
-{
-    $id = Auth::id();
-    $users = new Checkout();
+            public function getcheckin(Request $request)
+            {
+            //  $id = Auth::id();
 
-    $users->user_id =$id;
-    $users->Restaurant_name = $request->Restaurant_name;
+               $users = Checkin::where('User_id', $request->User_id)->get();
 
-    $users->date = $request->date;
+            //    $users = Checkinckeckout::where('status', 1)->get();
 
-    $users->checkin_time = $request->checkin_time;
-    $users->checkout_time = $request->checkout_time;
+               return response()->json(['statusCode' => 200, 'message' => 'Get user checkindetail successfully', 'data' => $users], 200);
 
-    $users->status = 2;
 
-    $users->save();
 
-   if ($users != null) {
-        return response()->json(['statusCode' => 200, 'message' => 'user checkout successfully', 'data' => $users], 200);
-    }
+        }
 
-    return response()->json(['statusCode' => 400, 'message' => 'Please check your data!','data'=>$users], 200);
-    }
+    public function checkinoutdetail(request $request){
 
-    public function getcheckout(Request $request){
-        $users = Checkinckeckout::get();
+
+        $users=User::where('id',$request->user_id)->with(['getCheckinoutDetail'=>function($q){
+            $q->where('status','=',1);
+        }])->get();
+
 
         return response()->json(['statusCode' => 200, 'message' => 'Get user checkindetail successfully', 'data' => $users], 200);
 
 
+
+
+
     }
+
+    public function checkoutdetail(request $request){
+
+
+        $users=User::where('id',$request->id)->with(['getCheckinoutDetail'=>function($q){
+            $q->where('status','=',2);
+        }])->get();
+
+
+
+        return response()->json(['statusCode' => 200, 'message' => 'Get user checkoutdetail successfully', 'data' => $users], 200);
+
+
+
+
+
+    }
+
+    public function checkdetailbyDate(request $request){
+
+        $history = Checkinckeckout:: where('user_id',auth()->user()->id)->where('date', $request->date)
+
+                                ->first();
+
+
+                        if ($history != null) {
+
+                                    return response()->json(['statusCode' => 200, 'message' => 'get history successfully', 'data' => $history], 200);
+                                }
+                                else {
+
+                                    return response()->json(['statusCode' => 400, 'message' => ' There is  no   checkin now   ', 'data' => (object) []], 200);
+
+
+
+                                          }
+
+        return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully', 'data' => $history], 200);
+
+    }
+        public function CheckdetailNow(request $request){
+        // $now = Carbon::now();
+
+        $history = Checkout::whereDate('created_at',  Carbon::today())->get();
+
+        $history=User::with('getCheckinDetail','getCheckoutDetail')->whereDate('created_at',  Carbon::today())->get();
+        return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully', 'data' => $history], 200);
+
+    }
+
+    public function checkin (Request $request )
+    {
+        $id = Auth::id();
+        $users = new checkin();
+
+        $users->user_id =$id;
+        $users->Restaurant_name = $request->Restaurant_name;
+
+        $users->date = $request->date;
+
+        $users->checkin_time = $request->checkin_time;
+        $users->status = 1;
+
+        $users->save();
+
+        if ($users != null) {
+            return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
+        }
+
+        return response()->json(['statusCode' => 400, 'message' => 'Please check your data!'], 200);
+        }
+
+
+        public function checkout (Request $request )
+    {
+        $id = Auth::id();
+        $users = new Checkout();
+
+        $users->user_id =$id;
+        $users->Restaurant_name = $request->Restaurant_name;
+
+        $users->date = $request->date;
+
+        $users->checkin_time = $request->checkin_time;
+        $users->checkout_time = $request->checkout_time;
+
+
+
+
+        $users->status = 2;
+
+        $users->save();
+
+       if ($users != null) {
+            return response()->json(['statusCode' => 200, 'message' => 'user checkout successfully', 'data' => $users], 200);
+        }
+
+        return response()->json(['statusCode' => 400, 'message' => 'Please check your data!','data'=>$users], 200);
+        }
+
+        public function getcheckout(Request $request){
+            $users = Checkinckeckout::get();
+
+            return response()->json(['statusCode' => 200, 'message' => 'Get user checkindetail successfully', 'data' => $users], 200);
+
+
+        }
+
+
+        // $latitude = "23.033863";
+        // $longitude = "72.585022";
+        // $users = User::select("name", \DB::raw("6371 * acos(cos(radians(" . $latitude . "))
+        //         * cos(radians(latitude)) * cos(radians(longitude) - radians(" . $longitude . "))
+        //         + sin(radians(" .$latitude. ")) * sin(radians(latitude))) AS distance"))
+        //         ->having('distance', '<', 1000)
+        //         ->orderBy('distance')
+        //         ->get()->toArray();
+
 
 
 

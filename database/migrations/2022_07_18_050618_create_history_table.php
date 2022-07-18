@@ -13,19 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('checkinouts', function (Blueprint $table) {
+        Schema::create('history', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('Restaurant_name');
             $table->date('date');
-            $table->time('checkin_time');
-            $table->time('checkout_time');
+            $table->string('checkin_time');
+            $table->string('checkout_time');
+            $table->string('lat');
+            $table->string('long');
 
             $table->integer('status');
+
             $table->timestamps();
         });
-
     }
 
     /**
@@ -35,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('checkinouts');
+        Schema::dropIfExists('history');
     }
 };
