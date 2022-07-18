@@ -37,7 +37,7 @@ class User extends Authenticatable
     // }
     function getCheckinoutDetail()
     {
-        return $this->hasOne(History::class);
+        return $this->hasOne(Checkinckeckout::class);
     }
 
     /**
