@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('checkout_address')->nullable();
              $table->integer('status');
             $table->timestamps();
+            $table->timestamps();
         });
     }
 
