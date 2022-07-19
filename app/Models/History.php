@@ -16,8 +16,8 @@ class History extends Model
         'checkin_time',
         'checkout_time',
         'status',
-        'lat',
-        'long'
+        'checkin_address',
+        'checkout_address'
 
     ];
 }

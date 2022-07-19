@@ -15,8 +15,8 @@ class Checkinckeckout extends Model
         'date',
         'checkin_time',
         'checkout_time',
-        "lat",
-        "long",
+        "checkin_address",
+        "checkout_address",
         'status'
 
     ];

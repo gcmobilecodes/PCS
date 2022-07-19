@@ -32,8 +32,8 @@ class DetailsController extends Controller
 
         $data['checkin_time'] = $request->checkin_time;
         $data['checkout_time'] = $request->checkout_time;
-        $data['lat'] = $request->lat;
-        $data['long'] = $request->long;
+        $data['checkin_address'] = $request->checkin_address;
+        $data['checkout_address'] = $request->checkout_address;
 
 
         $data['status']=$request->status;
@@ -150,7 +150,7 @@ return response()->json(['statusCode' => 200, 'message' => 'Get user history suc
     $users->user_id =$id;
     $users->Query = $request->Query;
     $users->save();
-    return response()->json(['statusCode' => 400, 'message' => 'send Query sucessfully', 'data' => $users], 200);
+    return response()->json(['statusCode' => 200, 'message' => 'send Query sucessfully', 'data' => $users], 200);
 
 
 }
