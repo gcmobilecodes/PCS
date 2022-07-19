@@ -23,8 +23,7 @@ return new class extends Migration
             $table->string('checkout_time');
             $table->string('checkin_address');
             $table->string('checkout_address');
-
-            $table->string('status');
+             $table->integer('status');
             $table->timestamps();
         });
     }
