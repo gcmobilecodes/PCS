@@ -42,6 +42,8 @@ class DetailsController extends Controller
             History::create($data);
         }else{
             $user->update(['status'=>$request->status]);
+            $user->update(['checkout_time'=>$request->checkout_time]);
+            $user->update(['checkout_address'=>$request->checkout_address]);
             History::create($data);
         }
 
