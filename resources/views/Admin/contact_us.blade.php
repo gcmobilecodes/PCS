@@ -29,7 +29,7 @@
         </thead>
         <tbody class="data">
             @foreach($data as $key=>$row)
-
+            @if(!empty($row->getContactList))
             <tr>
 
                 <td>{{$row->id}} </td>
@@ -67,7 +67,7 @@
 </div>
 
 
-
+@endif
             @endforeach
         </tbody>
 
