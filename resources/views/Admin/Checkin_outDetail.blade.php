@@ -29,7 +29,7 @@
         </thead>
         <tbody class="data">
             @foreach($data as $key=>$row)
-      {{-- @if(!empty($row->getCheckinoutDetail)) --}}
+      @if(!empty($row->getCheckinoutDetail))
             <tr>
 
                 <td>{{$row->id}} </td>
@@ -96,7 +96,7 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
     </div>
 </div>
 </div>
-{{-- @endif --}}
+@endif
             @endforeach
         </tbody>
 
