@@ -14,7 +14,8 @@ class RegisterController extends Controller
     public function register(Request $request){
 
         $rules=array(
-        'mobile_number' => 'required|unique:users',
+        'mobile_number' => 'required|unique:users'
+        ,'name'=>'required'
         );
         $validate=Validator::make($request->all(),$rules);
         if($validate->fails()){
