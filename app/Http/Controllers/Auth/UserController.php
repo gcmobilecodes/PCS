@@ -99,6 +99,27 @@ return response()->json(['statusCode' => 400, 'message' => 'Already   logout'], 
 
         }
 
+    // $checkinUsers=Checkinckeckout::whereStatus(1)->filter($request)->where('user_id',auth()->user()->id)->first();
+    // $checkoutUsers=Checkinckeckout::whereStatus(2)->filter($request)->where('user_id',auth()->user()->id)->first();
+
+
+
+    // return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully','checkin_user'=>$checkinUsers,'checkout_user' => $checkoutUsers], 200);
+
+//     $history = Checkinckeckout:: where('user_id',$request->user_id)->where('date', $request->date)->where('status', $request->status)
+
+//                             ->first();
+
+// if($history->status==1){
+
+// $history->update(['status', 1]);
+//     return response()->json(['statusCode' => 200, 'message' => 'get history successfully', 'data' => $history], 200);
+
+// }elseif($history->status==2){
+//     $history->update(['status', 2]);
+//     return response()->json(['statusCode' => 200, 'message' => 'get history successfully', 'data' => $history], 200);
+
+// }
 
     }
 
