@@ -16,16 +16,7 @@ class UserController extends Controller
     function login(Request $request)
     {
 
-        $rules=array(  'mobile_number'          => 'required',
-        'password'            => 'required',
-       );
-        $validate=Validator::make($request->all(),$rules);
-        if($validate->fails()){
 
-            return response()->json(['statusCode' => 400, 'message' => 'please fill the required fields.','data'=>(object) []], 200);
-
-
-     }else{
         $user = User::where('mobile_number', $request->mobile_number)->first();
         $credentials = [
             'mobile_number'    => $request->mobile_number,
@@ -41,7 +32,7 @@ class UserController extends Controller
         } else {
             return response()->json(['statusCode' => 400, 'message' => 'Credential are not correct', 'data' => (object) []], 200);
         }
-    }}
+    }
     public function update(Request $request)
     {
         $id  =Auth::id();
