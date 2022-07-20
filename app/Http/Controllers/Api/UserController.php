@@ -22,7 +22,7 @@ class UserController extends Controller
         $validate=Validator::make($request->all(),$rules);
         if($validate->fails()){
 
-         return response()->json(['statusCode' => 422, 'message'=> "please fill the required fields", 'data' =>$validate->errors()->all()] , 200);
+            return response()->json(['statusCode' => 400, 'message' => 'please fill the required fields.','data'=>(object) []], 200);
 
 
      }else{
@@ -39,7 +39,7 @@ class UserController extends Controller
 
 
         } else {
-            return response()->json(['statusCode' => 400, 'message' => 'These credentials do not match our records.'], 400);
+            return response()->json(['statusCode' => 400, 'message' => 'Credential are not correct', 'data' => (object) []], 200);
         }
     }}
     public function update(Request $request)
