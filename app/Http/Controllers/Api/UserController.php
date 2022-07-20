@@ -15,51 +15,36 @@ class UserController extends Controller
 {
     function login(Request $request)
     {
+
         $rules=array(  'mobile_number'          => 'required',
         'password'            => 'required',
        );
         $validate=Validator::make($request->all(),$rules);
         if($validate->fails()){
 
+         return response()->json(['statusCode' => 422, 'message'=> "please fill the required fields", 'data' =>$validate->errors()->all()] , 200);
 
-        return response()->json(['statusCode' => 400, 'message' => 'please fill the required fields.','data'=>(object) []], 200);
 
      }else{
-
-
         $user = User::where('mobile_number', $request->mobile_number)->first();
-
         $credentials = [
             'mobile_number'    => $request->mobile_number,
             'password' => $request->password
         ];
-
-
         if(auth()->attempt($credentials)) {
 
-
-
                 $token = $user->createToken('my-app-token')->plainTextToken;
-
                 $user['token'] = $token;
-
                 return response()->json(['statusCode' => 200, 'message' => 'login successfully', 'data' => $user], 200);
 
 
         } else {
-
-          return response()->json(['statusCode' => 400, 'message' => 'Credential are not correct', 'data' => (object) []], 200);
-
-
-
-                }
-
+            return response()->json(['statusCode' => 400, 'message' => 'These credentials do not match our records.'], 400);
+        }
     }}
     public function update(Request $request)
     {
-
         $id  =Auth::id();
-
         $users = User::find($id);
         $users->name              = isset($request->name) && !empty($request->name) ? $request->name : $users->name;
         $users->mobile_number  =  isset($request->mobile_number) && !empty($request->mobile_number) ? $request->mobile_number : $users->mobile_number;
@@ -67,37 +52,31 @@ class UserController extends Controller
 
         $users->profile_pic             =  isset($request->profile_pic) && !empty($request->profile_pic) ? $request->profile_pic : $users->profile_pic;
 
+        if ($request->profile_pic) {
+            $profile = $request->file('profile_pic')->getClientOriginalName();
+            $address =  $request->file('profile_pic')->store('public/images');
+            $users->profile_pic = $address;
 
-        if ($request->file('profile_pic')) {
-            $imagePath = $request->file('profile_pic');
-            $imageName = $imagePath->getClientOriginalName();
-
-            $path = $request->file('profile_pic')->storeAs('uploads', $imageName, 'public');
-
-
-        $users->profile_pic = $imageName;
-        $users->profile_pic = '/storage/'.$path;
- }
+        }
         $result = $users->save();
         if ($result) {
             return response()->json(['statusCode' => 200, 'message' => 'User Profile  Updated  successfully',  'data' => $users], 200);
         } else {
-            return response()->json(['statusCode' => 400, 'message' => 'update operation  failed' ,'data'=>(object) []], 200);
+            return response()->json(['statusCode' => 400, 'message' => 'update operation  failed '], 400);
         }
     }
-    public function logout()
+    public function logout(Request $request)
   {
-    $id = Auth::User()->id;
-
+        $id = Auth::user()->id;
         if (Auth::check()) {
          User::where('id', $id)->update(['device_token' => 1]);
             Auth::user()->tokens()->delete();
             return response()->json(['statusCode' => 200, 'message' => 'User logout successfully.'], 200);
         } else {
-return response()->json(['statusCode' => 400, 'message' => 'Already   logout'], 200);
-
+return response()->json(['statusCode' => 400, 'message' => 'Already   logout'], 400);
 
         }
+    }
 
 
     }
@@ -105,4 +84,4 @@ return response()->json(['statusCode' => 400, 'message' => 'Already   logout'], 
 
 
 
-}
+
