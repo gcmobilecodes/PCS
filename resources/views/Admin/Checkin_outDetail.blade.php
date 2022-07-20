@@ -236,6 +236,10 @@ $(document).on("click", ".edit-modal", function(e) {
                             checkindetail.checkin_time +
                         '</strong></label><label for="floatingInput"><strong><services><p>Ckeckout Time&nbsp;&nbsp;: &nbsp;&nbsp' +
                             checkindetail.checkout_time +
+                        '</strong></label><label for="floatingInput"><strong><services><p>Ckeckout Time&nbsp;&nbsp;: &nbsp;&nbsp' +
+                            checkindetail.checkin_address +
+                        '</strong></label><label for="floatingInput"><strong><services><p>Ckeckout Time&nbsp;&nbsp;: &nbsp;&nbsp' +
+                            checkindetail.checkout_address +
                         '</strong></label>';
                     $('#checkin_details').html(checkin_dt);
 
