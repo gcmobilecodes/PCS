@@ -56,13 +56,13 @@ class UserController extends Controller
             $profile = $request->file('profile_pic')->getClientOriginalName();
             $address =  $request->file('profile_pic')->store('public/images');
             $users->profile_pic = $address;
-
+dd($request);
         }
         $result = $users->save();
         if ($result) {
             return response()->json(['statusCode' => 200, 'message' => 'User Profile  Updated  successfully',  'data' => $users], 200);
         } else {
-            return response()->json(['statusCode' => 400, 'message' => 'update operation  failed '], 400);
+            return response()->json(['statusCode' => 400, 'message' => 'update operation  failed '], 200);
         }
     }
     public function logout(Request $request)
