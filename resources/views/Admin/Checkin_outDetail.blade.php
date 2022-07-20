@@ -29,7 +29,7 @@
         </thead>
         <tbody class="data">
             @foreach($data as $key=>$row)
-      @if(!empty($row->getCheckinoutDetail))
+      @if(!empty($row->getCheckinoutDetail->date))
             <tr>
 
                 <td>{{$row->id}} </td>

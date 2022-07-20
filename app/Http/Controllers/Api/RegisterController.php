@@ -14,13 +14,14 @@ class RegisterController extends Controller
     public function register(Request $request){
 
         $rules=array(
-        'name' => 'required|string',
-        'password' => 'required');
+        'mobile_number' => 'required|unique:users',
+        );
         $validate=Validator::make($request->all(),$rules);
         if($validate->fails()){
 
-         return response()->json(['statusCode' => 422, 'message'=> "please fill the required fields", 'data' =>$validate->errors()->all()] , 200);
+        //  return response()->json(['statusCode' => 422, 'message'=> "ple", 'data' =>$validate->errors()->all()] , 200);
 
+    return response()->json(['statusCode' => 400, 'message'=> "this phone number already register here", ] , 200);
 
      }else{
         $users = new User();
