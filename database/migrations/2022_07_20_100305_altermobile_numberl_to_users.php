@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('mobile_number')->unique()->change();
-        });    }
+
+        });
+    }
 
     /**
      * Reverse the migrations.
@@ -26,7 +28,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('mobile_number')->unique(false)->change();
-        });
 
+        });
     }
 };
