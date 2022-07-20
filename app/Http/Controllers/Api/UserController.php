@@ -52,11 +52,20 @@ class UserController extends Controller
 
         $users->profile_pic             =  isset($request->profile_pic) && !empty($request->profile_pic) ? $request->profile_pic : $users->profile_pic;
 
-        if ($request->profile_pic) {
-            $profile = $request->file('profile_pic')->getClientOriginalName();
-            $address =  $request->file('profile_pic')->store('public/images');
-            $users->profile_pic = $address;
-dd($request);
+        // if ($request->profile_pic) {
+        //     $profile = $request->file('profile_pic')->getClientOriginalName();
+        //     $address =  $request->file('profile_pic')->store('public/images');
+        //     $users->profile_pic = $address;
+        if ($request->file('profile_pic')) {
+            $imagePath = $request->file('profile_pic');
+            $imageName = $imagePath->getClientOriginalName();
+
+            $path = $request->file('profile_pic')->storeAs('uploads', $imageName, 'public');
+
+
+        $users->profile_pic = $imageName;
+        $users->profile_pic = '/storage/'.$path;
+
         }
         $result = $users->save();
         if ($result) {
