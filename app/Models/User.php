@@ -29,14 +29,14 @@ class User extends Authenticatable
         'status'
      ];
 
-    // function getCheckinoutDetail()
-    // {
-    //     return $this->hasOne(Checkinckeckout::class);
-    // }
     function getCheckinoutDetail()
     {
-        return $this->hasOne(History::class);
+        return $this->hasOne(Checkinckeckout::class);
     }
+    // function getCheckinoutDetail()
+    // {
+    //     return $this->hasOne(History::class);
+    // }
     function getContactList()
     {
         return $this->hasOne(Contactus::class);
