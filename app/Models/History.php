@@ -20,4 +20,8 @@ class History extends Model
         'checkout_address'
 
     ];
+     function getCheckinoutDetail()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

@@ -112,6 +112,7 @@ class DetailsController extends Controller
 
                                           }
 
+
         return response()->json(['statusCode' => 200, 'message' => 'Get user history successfully', 'data' => $history], 200);
 
     }
@@ -157,9 +158,10 @@ return response()->json(['statusCode' => 200, 'message' => 'Get user history suc
 
 }
 
-public function getdetailcontact(){
+public function getdetailcontact(request $request){
     $data=User::where('user_type',1)->with('getContactList')
     ->get();
+
     return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $data], 200);
 
 

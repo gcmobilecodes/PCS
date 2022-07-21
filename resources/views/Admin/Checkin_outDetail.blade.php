@@ -22,26 +22,45 @@
                 <th>id</th>
                 <th>Name</th>
                 <th>mobile_number</th>
+                <th>user_id</th>
+
                 <th>checkin date</th>
+                <th>checkout date</th>
+
                 <th >Action</th>
 
             </tr>
         </thead>
         <tbody class="data">
             @foreach($data as $key=>$row)
-      @if(!empty($row->getCheckinoutDetail->date))
+
             <tr>
 
-                <td>{{$row->id}} </td>
+                {{-- <td>{{$row->id}} </td>
                 <td>{{$row->name}}</td>
                 <td>{{$row->mobile_number}}</td>
                 <td>{{date('Y-m-d',strtotime($row->getCheckinoutDetail->date))}}</td>
                 <td>
-                    {{-- <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                    Launch demo modal
-                </button> --}}
+
                 <div  class="btn btn-sm edit-modal"  data-id=' {{$row->id}}' name='.$-> name .'> <button type="button" class="btn btn-primary" > View Details</button></div>
-                <div class="delete-modal btn  btn-sm" data-id='{{$row->id}}'  id="deletecategory1" name='.$row->name.'><i class="fa fa-trash" aria-hidden="true"></i></div></td>
+                <div class="delete-modal btn  btn-sm" data-id='{{$row->id}}'  id="deletecategory1" name='.$row->name.'><i class="fa fa-trash" aria-hidden="true"></i></div></td> --}}
+                <td>{{$row->id}} </td>
+                <td>{{$row->getCheckinoutDetail->name}}</td>
+                <td>{{$row->getCheckinoutDetail->mobile_number}}</td>
+                <td>{{$row->user_id}}</td>
+
+               @if($row->status==1)
+                <td>{{date('Y-m-d',strtotime($row->date))}}</td>
+               @else
+               <td></td>
+               @endif
+               @if($row->status==2)
+                <td>{{date('Y-m-d',strtotime($row->date))}}</td>
+               @else
+               <td></td>
+               @endif
+                <td>                 <div  class="btn btn-sm edit-modal"  data-id=' {{$row->id}}' name='.$-> name .'> <button type="button" class="btn btn-primary" > View Details</button></div>
+                    <div class="delete-modal btn  btn-sm" data-id='{{$row->id}}'  id="deletecategory1" name='.$row->name.'><i class="fa fa-trash" aria-hidden="true"></i></div></td>
 
             </tr>
 
@@ -96,7 +115,7 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
     </div>
 </div>
 </div>
-@endif
+
             @endforeach
         </tbody>
 
@@ -194,6 +213,7 @@ $(document).on("click", ".edit-modal", function(e) {
                 success: function(data) {
 
                     console.log(data);
+
                     var service = data.get_checkinout_detail;
                     console.log(service);
 
@@ -212,13 +232,13 @@ $(document).on("click", ".edit-modal", function(e) {
 
                         '<label for="floatingInput"><strong><img src="' + imagee +
                         '" style="height:100px; width:100px;"></label><br><label for="floatingInput"><strong><p>id&nbsp;&nbsp;:&nbsp;&nbsp' +
-                        data.id +
+                        service.id +
                         '</p></strong></label><br><label for="floatingInput"><p>Name&nbsp;&nbsp;:&nbsp;&nbsp ' +
-                        data.name +
+                            service.name +
                         '</p></strong></label><br><label for="floatingInput"><strong><p>Contact No&nbsp;&nbsp;:&nbsp;&nbsp' +
-                        data.mobile_number +
+                            service.mobile_number +
                         '</p></strong></label><br><label for="floatingInput"><strong><p>Employee_id&nbsp;&nbsp;:&nbsp;&nbsp' +
-                        data.employee_id +
+                            service.employee_id +
                         '</p></strong></label></html>'
                     );
                     var checkindetail = data.get_checkinout_detail;
@@ -227,19 +247,19 @@ $(document).on("click", ".edit-modal", function(e) {
 
                     checkin_dt +=
                         '<label for="floatingInput"><strong><services><p>user_id&nbsp;&nbsp;: &nbsp;&nbsp ' +
-                         checkindetail.user_id +
+                         data.user_id +
                         '</strong><label for="floatingInput"><strong><services><p>Restaurant Name&nbsp;&nbsp;: &nbsp;&nbsp ' +
-                            checkindetail.Restaurant_name +
+                            data.Restaurant_name +
                         '</strong></label><label for="floatingInput"><strong><services><p>Checkin Date&nbsp;&nbsp;: &nbsp;&nbsp' +
-                            checkindetail.date +
+                            data.date +
                         '</strong></label><label for="floatingInput"><strong><services><p>Ckeckin Time&nbsp;&nbsp;: &nbsp;&nbsp' +
-                            checkindetail.checkin_time +
+                            data.checkin_time +
                         '</strong></label><label for="floatingInput"><strong><services><p>Ckeckout Time&nbsp;&nbsp;: &nbsp;&nbsp' +
-                            checkindetail.checkout_time +
+                            data.checkout_time +
                         '</strong></label><label for="floatingInput"><strong><services><p>Ckeckin Address&nbsp;&nbsp;: &nbsp;&nbsp' +
-                            checkindetail.checkin_address +
+                            data.checkin_address +
                         '</strong></label><label for="floatingInput"><strong><services><p>Ckeckout Address&nbsp;&nbsp;: &nbsp;&nbsp' +
-                            checkindetail.checkout_address +
+                            data.checkout_address +
                         '</strong></label>';
                     $('#checkin_details').html(checkin_dt);
 
