@@ -37,18 +37,25 @@ class DetailsController extends Controller
         $data['checkout_address'] = $request->checkout_address;
 
 
-        $data['status']=$request->status;
+        $data['status']=$request->status ;
         if(!$user){
             Checkinckeckout::create($data);
             History::create($data);
         }else{
-            $user->update(['status'=>$request->status,'date' => $request->date,'checkin_time' => $request->checkin_time,'checkout_time' => $request->checkout_time,'checkin_address' => $request->checkin_address,'checkout_address' => $request->checkout_address]);
+            $user->update(['status'=>$request->status,'date' => $request->date,'checkin_time' => $request->checkin_time,'checkout_time' => $request->checkout_time,'checkin_address' => $request->checkin_address,'checkout_address' => $request->checkout_address,]);
 
             History::create($data);
+
         }
-
-
-        if (!empty($users)) {
+        // $users = new Checkinckeckout();
+        // $users->user_id = $request->$id;
+        // $users->Restaurant_name=$request->Restaurant_name;
+        // $users->date=$request->employee_id;
+        // $users->checkin_time=$request->checkin_time;
+        // $users->checkin_time=$request->checkin_time;
+        // $users->checkin_time=$request->checkin_time;
+        // $users->checkin_time=$request->checkin_time;
+     if (!empty($users)) {
             return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
         }else{
             return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $user], 200);

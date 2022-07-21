@@ -79,7 +79,7 @@ class UserController extends Controller
             Auth::user()->tokens()->delete();
             return response()->json(['statusCode' => 200, 'message' => 'User logout successfully.'], 200);
         } else {
-return response()->json(['statusCode' => 400, 'message' => 'Already   logout'], 400);
+return response()->json(['statusCode' => 400, 'message' => 'Already   logout'], 200);
 
         }
     }

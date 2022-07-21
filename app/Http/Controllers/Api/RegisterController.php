@@ -20,7 +20,6 @@ class RegisterController extends Controller
         $validate=Validator::make($request->all(),$rules);
         if($validate->fails()){
 
-        //  return response()->json(['statusCode' => 422, 'message'=> "ple", 'data' =>$validate->errors()->all()] , 200);
 
     return response()->json(['statusCode' => 400, 'message'=> "this phone number already register here", ] , 200);
 
@@ -45,7 +44,9 @@ class RegisterController extends Controller
         $users->profile_pic = $imageName;
         $users->profile_pic = '/storage/'.$path;
  }
+ Log::info($users->profile_pic = '/storage/'.$path);
         $users->save();
+
 
 if ($users != null) {
 

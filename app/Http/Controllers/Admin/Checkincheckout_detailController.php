@@ -17,10 +17,7 @@ use Yajra\DataTables\Facades\DataTables;
 class Checkincheckout_detailController extends Controller
 {
     public function FullDetail(request $request){
-        // if ($request->ajax()) {
 
-            // $data=User::where('user_type',1)->with('getCheckinoutDetail')
-            // ->get();
             $data=History::with('getCheckinoutDetail')->get();
 
 
@@ -73,10 +70,7 @@ class Checkincheckout_detailController extends Controller
 
     public function datePickers(request $request){
       $date=date('Y-m-d',strtotime($request->date));
-    //   $data=User::where('user_type',1)->with('getCheckinoutDetail')->whereHas('getCheckinoutDetail', function ($q) use ($date) {
-    //     $q->where('date','=',$date);
 
-    // })->get();
     $data=History::where('date','=',$date)->with('getCheckinoutDetail')->get();
 
      $html= view('Admin.Ajax.table',compact('data'))->render();

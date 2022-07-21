@@ -38,7 +38,7 @@ Route::get('checkall', [DetailsController::class, 'checkinoutdetail']);
 Route::get('check_out', [DetailsController::class, 'checkoutdetail']);
 
 
-// Route::get('checkout_detail', [DetailsController::class, 'checkoutdetail']);
+//Route::get('checkout_detail', [DetailsController::class, 'checkoutdetail']);
 Route::post('checkin', [DetailsController::class, 'checkin']);
 Route::post('checkout', [DetailsController::class, 'checkout']);
 Route::post('history', [DetailsController::class, 'checkdetailbyDate']);
