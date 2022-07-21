@@ -31,6 +31,7 @@ class DetailsController extends Controller
         $data['date'] = $request->date;
 
         $data['checkin_time'] = $request->checkin_time;
+        $data['checkout_time'] = $request->checkout_time;
 
         $data['checkin_address'] = $request->checkin_address;
         $data['checkout_address'] = $request->checkout_address;
@@ -41,7 +42,7 @@ class DetailsController extends Controller
             Checkinckeckout::create($data);
             History::create($data);
         }else{
-            $user->update(['status'=>$request->status,'checkout_time' => $request->checkout_time,'checkout_address' => $request->checkout_address]);
+            $user->update(['status'=>$request->status,'date' => $request->date,'checkin_time' => $request->checkin_time,'checkout_time' => $request->checkout_time,'checkin_address' => $request->checkin_address,'checkout_address' => $request->checkout_address]);
 
             History::create($data);
         }
