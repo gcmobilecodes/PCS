@@ -218,7 +218,7 @@ $(document).on("click", ".edit-modal", function(e) {
                     console.log(service);
 
                     if (service.profile_pic) {
-                        var imagee = "http://18.119.37.224/" + service.profile_pic;
+                        var imagee = "http://18.119.37.224" + service.profile_pic;
                         console.log(imagee);
 
                     } else {
