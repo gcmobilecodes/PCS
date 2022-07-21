@@ -29,17 +29,17 @@
         </thead>
         <tbody class="data">
             @foreach($data as $key=>$row)
-            @if(!empty($row->getContactList))
+            {{-- @if(!empty($row->getContactList)) --}}
             <tr>
 
-                <td>{{$row->id}} </td>
-                <td>{{$row->name}}</td>
-                <td>{{$row->mobile_number}}</td>
-                <td>{{$row->getContactList->Query}}</td>
+                <td>{{$row->getContactList->id}} </td>
+                <td>{{$row->getContactList->name}}</td>
+                <td>{{$row->getContactList->mobile_number}}</td>
+                <td>{{$row->Query}}</td>
 
                 <td>
 
-                <div class="delete-modal btn  btn-sm" data-id='{{$row->id}}'  id="deletecategory1" name='.$row->name.'><i class="fa fa-trash" aria-hidden="true"></i></div></td>
+                <div class="delete-modal btn  btn-sm" data-id='{{$row->getContactList->id}}'  id="deletecategory1" name='.$row->name.'><i class="fa fa-trash" aria-hidden="true"></i></div></td>
 
             </tr>
 
@@ -67,7 +67,7 @@
 </div>
 
 
-@endif
+{{-- @endif --}}
             @endforeach
         </tbody>
 

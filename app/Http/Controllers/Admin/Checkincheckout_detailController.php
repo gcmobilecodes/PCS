@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Checkin;
 use App\Models\Checkinckeckout;
 use App\Models\Checkout;
+use App\Models\Contactus;
 use App\Models\History;
 use App\Models\User;
 use Carbon\Carbon;
@@ -88,7 +89,7 @@ class Checkincheckout_detailController extends Controller
 
     public function Contactus(){
 
-            $data=User::where('user_type',1)->with('getContactList')
+            $data=Contactus::with('getContactList')
             ->get();
 
 
