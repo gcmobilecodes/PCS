@@ -8,13 +8,12 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 
   <div class="container ">
-    <h4>contactUs list</h4>
+    <h4>ContactUs list</h4>
 
 <table id="example" class="table table-striped" style="width:100%">
 
 
 
- {{-- <input type="hidden" value="{{csrf_field()}}"> --}}
 
         <thead>
             <tr>
@@ -29,7 +28,6 @@
         </thead>
         <tbody class="data">
             @foreach($data as $key=>$row)
-            {{-- @if(!empty($row->getContactList)) --}}
             <tr>
 
                 <td>{{$row->getContactList->id}} </td>
