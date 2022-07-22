@@ -23,43 +23,59 @@ class DetailsController extends Controller
         public function checkinUserData(request $request){
         $id = Auth::id();
 
-        $user =Checkinckeckout::where('user_id',auth()->user()->id)->first();
+    //     $user =Checkinckeckout::where('user_id',auth()->user()->id)->first();
+    //     $users =new Checkinckeckout();
 
-        $data['user_id'] =$id;
-        $data['Restaurant_name'] = $request->Restaurant_name;
+    //     $users= $data['user_id'] =$id;
+    //   $users=  $data['Restaurant_name'] = $request->Restaurant_name;
 
-        $data['date'] = $request->date;
+    //   $users=  $data['date'] = $request->date;
 
-        $data['checkin_time'] = $request->checkin_time;
-        $data['checkout_time'] = $request->checkout_time;
+    //   $users=  $data['checkin_time'] = $request->checkin_time;
+    //   $users= $data['checkout_time'] = $request->checkout_time;
 
-        $data['checkin_address'] = $request->checkin_address;
-        $data['checkout_address'] = $request->checkout_address;
+    //   $users=  $data['checkin_address'] = $request->checkin_address;
+    //    $users=  $data['checkout_address'] = $request->checkout_address;
 
 
-        $data['status']=$request->status ;
-        if(!$user){
-            Checkinckeckout::create($data);
-            History::create($data);
-        }else{
-            $user->update(['status'=>$request->status,'date' => $request->date,'checkin_time' => $request->checkin_time,'checkout_time' => $request->checkout_time,'checkin_address' => $request->checkin_address,'checkout_address' => $request->checkout_address,]);
+    //    $users= $data['status']=$request->status ;
+    //     if(!$user){
+    //         Checkinckeckout::create($data);
+    //         History::create($data);
+    //     }else{
+    //         $user->update(['status'=>$request->status,'date' => $request->date,'checkin_time' => $request->checkin_time,'checkout_time' => $request->checkout_time,'checkin_address' => $request->checkin_address,'checkout_address' => $request->checkout_address,]);
 
-            History::create($data);
+    //         History::create($data);
 
-        }
-        // $users = new Checkinckeckout();
-        // $users->user_id = $request->$id;
-        // $users->Restaurant_name=$request->Restaurant_name;
-        // $users->date=$request->employee_id;
+        // }
+        $users = new Checkinckeckout();
+        $users->user_id =$id;
+        $users->Restaurant_name=$request->Restaurant_name;
+        $users->date=$request->date;
         // $users->checkin_time=$request->checkin_time;
-        // $users->checkin_time=$request->checkin_time;
-        // $users->checkin_time=$request->checkin_time;
-        // $users->checkin_time=$request->checkin_time;
+
+        $users->checkin_time=$request->checkin_time;
+        $users->checkout_time=$request->checkout_time;
+        $users->checkin_address=$request->checkin_address;
+        $users->checkout_address=$request->checkout_address;
+        $users->status=$request->status;
+if($users->status==1){
+    // $users= Checkinckeckout::create($data);
+    $users->save();
+}else{
+    $users::where('id', $request->id)->update(['status'=>$request->status,'date' => $request->date,'checkin_time' => $request->checkin_time,'checkout_time' => $request->checkout_time,'checkin_address' => $request->checkin_address,'checkout_address' => $request->checkout_address,] );
+
+    // $users->update(['user_id'=>$request->user_id, 'id'=>$request->id, 'status'=>$request->status,'date' => $request->date,'checkin_time' => $request->checkin_time,'checkout_time' => $request->checkout_time,'checkin_address' => $request->checkin_address,'checkout_address' => $request->checkout_address,] )
+    // ;
+  //  return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
+
+}
      if (!empty($users)) {
             return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
-        }else{
-            return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $user], 200);
         }
+        // else{
+        //     return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $user], 200);
+        // }
 
         return response()->json(['statusCode' => 400, 'message' => 'Please check your data!', 'data' => (object) []], 200);
     }

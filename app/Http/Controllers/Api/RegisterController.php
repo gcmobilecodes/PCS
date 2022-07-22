@@ -44,7 +44,7 @@ class RegisterController extends Controller
         $users->profile_pic = $imageName;
         $users->profile_pic = '/storage/'.$path;
  }
- Log::info($users->profile_pic = '/storage/'.$path);
+
         $users->save();
 
 
