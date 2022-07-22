@@ -66,7 +66,7 @@ if($users->status==1){
 
 }else{
     $users::where('id', $request->id)->update(['status'=>$request->status,'date' => $request->date,'checkin_time' => $request->checkin_time,'checkout_time' => $request->checkout_time,'checkin_address' => $request->checkin_address,'checkout_address' => $request->checkout_address,] );
-    History::create($users);
+
   //  return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
 
 }
