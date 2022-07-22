@@ -51,8 +51,8 @@
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{date('Y-m-d',strtotime($row->date))}}</td>
                @else
                <td></td>
-               @endif
-                <td>                 <div  class="btn btn-sm edit-modal"  data-id=' {{$row->id}}' name='.$-> name .'> <button type="button" class="btn btn-primary" > View Details</button></div> --}}
+               @endif --}}
+                <td>                 <div  class="btn btn-sm edit-modal"  data-id=' {{$row->id}}' name='.$-> name .'> <button type="button" class="btn btn-primary" > View Details</button></div>
                     <div class="delete-modal btn  btn-sm" data-id='{{$row->id}}'  id="deletecategory1" name='.$row->name.'><i class="fa fa-trash" aria-hidden="true"></i></div></td>
 
             </tr>
