@@ -28,7 +28,7 @@ class Checkincheckout_detailController extends Controller
 
     public function delete_service_provider(request $request){
 
-        $service_provider= History::where('id',$request->id);
+        $service_provider= Checkinckeckout::where('id',$request->id);
         $service_provider->delete();
         echo "service_provider detail Deleted Successfully";
 
@@ -39,7 +39,7 @@ class Checkincheckout_detailController extends Controller
     {
 
 
-        $companys=History::where('id',$request->id)->with('getCheckinoutDetail')->first();
+        $companys=Checkinckeckout::where('id',$request->id)->with('getCheckinoutDetail')->first();
 
         return Response()->json($companys);
     }
