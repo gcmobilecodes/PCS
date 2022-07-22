@@ -20,10 +20,16 @@ class Checkinckeckout extends Model
         'status'
 
     ];
+
+    function getCheckinoutDetail()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
     function scopeFilter($query,$request){
         if($request->date){
             $query->where('date',$request->date);
         }
         return $query;
+
  }
 }

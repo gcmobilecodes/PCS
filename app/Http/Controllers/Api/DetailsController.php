@@ -23,22 +23,22 @@ class DetailsController extends Controller
         public function checkinUserData(request $request){
         $id = Auth::id();
 
-    //     $user =Checkinckeckout::where('user_id',auth()->user()->id)->first();
-    //     $users =new Checkinckeckout();
-
-    //     $users= $data['user_id'] =$id;
-    //   $users=  $data['Restaurant_name'] = $request->Restaurant_name;
-
-    //   $users=  $data['date'] = $request->date;
-
-    //   $users=  $data['checkin_time'] = $request->checkin_time;
-    //   $users= $data['checkout_time'] = $request->checkout_time;
-
-    //   $users=  $data['checkin_address'] = $request->checkin_address;
-    //    $users=  $data['checkout_address'] = $request->checkout_address;
+    //     Checkinckeckout::where('user_id',auth()->user()->id)->first();
 
 
-    //    $users= $data['status']=$request->status ;
+    //$data['user_id'] =$id;
+    //   $data['Restaurant_name'] = $request->Restaurant_name;
+
+    //   $data['date'] = $request->date;
+
+    //   $data['checkin_time'] = $request->checkin_time;
+    //   $data['checkout_time'] = $request->checkout_time;
+
+    //    $data['checkin_address'] = $request->checkin_address;
+    //     $data['checkout_address'] = $request->checkout_address;
+
+
+    //     $data['status']=$request->status ;
     //     if(!$user){
     //         Checkinckeckout::create($data);
     //         History::create($data);
@@ -65,8 +65,6 @@ if($users->status==1){
 }else{
     $users::where('id', $request->id)->update(['status'=>$request->status,'date' => $request->date,'checkin_time' => $request->checkin_time,'checkout_time' => $request->checkout_time,'checkin_address' => $request->checkin_address,'checkout_address' => $request->checkout_address,] );
 
-    // $users->update(['user_id'=>$request->user_id, 'id'=>$request->id, 'status'=>$request->status,'date' => $request->date,'checkin_time' => $request->checkin_time,'checkout_time' => $request->checkout_time,'checkin_address' => $request->checkin_address,'checkout_address' => $request->checkout_address,] )
-    // ;
   //  return response()->json(['statusCode' => 200, 'message' => 'Register successfully', 'data' => $users], 200);
 
 }

@@ -18,7 +18,8 @@ class Checkincheckout_detailController extends Controller
 {
     public function FullDetail(request $request){
 
-            $data=History::with('getCheckinoutDetail')->get();
+            // $data=History::with('getCheckinoutDetail')->get();
+            $data=Checkinckeckout::with('getCheckinoutDetail')->get();
 
 
       return view('Admin.Checkin_outDetail',compact('data'));
@@ -71,7 +72,7 @@ class Checkincheckout_detailController extends Controller
     public function datePickers(request $request){
       $date=date('Y-m-d',strtotime($request->date));
 
-    $data=History::where('date','=',$date)->with('getCheckinoutDetail')->get();
+    $data=Checkinckeckout::where('date','=',$date)->with('getCheckinoutDetail')->get();
 
      $html= view('Admin.Ajax.table',compact('data'))->render();
      return response([
