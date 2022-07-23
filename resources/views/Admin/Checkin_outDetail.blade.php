@@ -245,13 +245,13 @@ $(document).on("click", ".edit-modal", function(e) {
                             data.Restaurant_name +
                         '</strong></label><label for="floatingInput"><strong><services><p>Checkin Date&nbsp;&nbsp;: &nbsp;&nbsp' +
                             data.date +
-                        '</strong></label><label for="floatingInput"><strong><services><p>Ckeckin Time&nbsp;&nbsp;: &nbsp;&nbsp' +
+                        '</strong></label><label for="floatingInput"><strong><services><p>Checkin Time&nbsp;&nbsp;: &nbsp;&nbsp' +
                             data.checkin_time +
-                        '</strong></label><label for="floatingInput"><strong><services><p>Ckeckout Time&nbsp;&nbsp;: &nbsp;&nbsp' +
+                        '</strong></label><label for="floatingInput"><strong><services><p>Checkout Time&nbsp;&nbsp;: &nbsp;&nbsp' +
                             data.checkout_time +
-                        '</strong></label><label for="floatingInput"><strong><services><p>Ckeckin Address&nbsp;&nbsp;: &nbsp;&nbsp' +
+                        '</strong></label><label for="floatingInput"><strong><services><p>Checkin Address&nbsp;&nbsp;: &nbsp;&nbsp' +
                             data.checkin_address +
-                        '</strong></label><label for="floatingInput"><strong><services><p>Ckeckout Address&nbsp;&nbsp;: &nbsp;&nbsp' +
+                        '</strong></label><label for="floatingInput"><strong><services><p>Checkout Address&nbsp;&nbsp;: &nbsp;&nbsp' +
                             data.checkout_address +
                         '</strong></label>';
                     $('#checkin_details').html(checkin_dt);
