@@ -44,7 +44,7 @@ class UserController extends Controller
     }}
     public function update(Request $request)
     {
-        $id  =Auth::id();
+         $id  =Auth::id();
         $users = User::find($id);
         $users->name              = isset($request->name) && !empty($request->name) ? $request->name : $users->name;
         $users->mobile_number  =  isset($request->mobile_number) && !empty($request->mobile_number) ? $request->mobile_number : $users->mobile_number;
