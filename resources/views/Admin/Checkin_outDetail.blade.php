@@ -210,22 +210,21 @@ $(document).on("click", ".edit-modal", function(e) {
                     var service = data.get_checkinout_detail;
                     console.log(service);
 
-                    // if (service.profile_pic) {
-                    //     var imagee = "http://18.119.37.224" + service.profile_pic;
-                    //     console.log(imagee);
+                    if (service.profile_pic) {
+                        var imagee = "http://18.119.37.224" + service.profile_pic;
+                        console.log(imagee);
 
-                    // } else {
-                    //     var imagee = "";
+                    } else {
+                        var imagee = "";
 
 
 
                     }
                     $('#editCategory').modal('show');
                     $('.edit_category').html(
-                        // <label for="floatingInput"><strong><img src="' + imagee +
-                        // '" style="height:100px; width:100px;"></label><br>
 
-                        '<label for="floatingInput"><strong><p>id&nbsp;&nbsp;:&nbsp;&nbsp' +
+                        '<label for="floatingInput"><strong><img src="' + imagee +
+                        '" style="height:100px; width:100px;"></label><br><label for="floatingInput"><strong><p>id&nbsp;&nbsp;:&nbsp;&nbsp' +
                         service.id +
                         '</p></strong></label><br><label for="floatingInput"><p>Name&nbsp;&nbsp;:&nbsp;&nbsp ' +
                             service.name +
