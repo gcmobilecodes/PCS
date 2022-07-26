@@ -220,7 +220,7 @@ $(document).on("click", ".edit-modal", function(e) {
                     //     '" style="height:100px; width:100px;"></label><br>
 
 
-                    }
+                    // }
                     $('#editCategory').modal('show');
                     $('.edit_category').html(
 
