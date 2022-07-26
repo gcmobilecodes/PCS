@@ -226,7 +226,7 @@ $(document).on("click", ".edit-modal", function(e) {
 
                         '<label for="floatingInput"><strong><p>id&nbsp;&nbsp;:&nbsp;&nbsp' +
                         service.id +
-                        '</p></strong></label><br><label for="floatingInput"><p>Name&nbsp;&nbsp;:&nbsp;&nbsp ' +
+                        '</p></strong></label><br><label for="floatingInput"><strong><p>Name&nbsp;&nbsp;:&nbsp;&nbsp ' +
                             service.name +
                         '</p></strong></label><br><label for="floatingInput"><strong><p>Contact No&nbsp;&nbsp;:&nbsp;&nbsp' +
                             service.mobile_number +
