@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\UserlistController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\TermsController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -26,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [LoginController::class, 'AdminLogin'])->name('Admin');
+Route::get('/PCS', [TermsController::class, 'Terms'])->name('PCS.index');
 
 
 Auth::routes();
