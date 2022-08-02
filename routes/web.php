@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [LoginController::class, 'AdminLogin'])->name('Admin');
-Route::get('/PCS', [TermsController::class, 'Terms'])->name('PCS.index');
+Route::get('/Terms&Conditions', [TermsController::class, 'Terms'])->name('PCS.index');
 
 
 Auth::routes();
