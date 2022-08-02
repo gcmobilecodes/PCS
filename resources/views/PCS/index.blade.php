@@ -19,8 +19,9 @@
 
             <h1 class="haeding">OUR TERMS OF SERVICE</h1>
           <div class="first_div">
-            <h3 class="heading1">Last Revised: May 2, 2019</h3>
-            <strong><p>In these Terms of and, Manhattan. Northern New Jersey, and South Florida ("PCS", Priority Cleaning Services) Your use of our website and mobile app is deemed acceptance of these Terms of Service
+            <h3 class="heading1">Last Revised: August 2, 2022</h3>
+            <strong><p>
+                In these Terms of Manhattan. Northern New Jersey, and South Florida (PCS) Your use of our website (Https://myprioritycleaning.com/) and mobile app is deemed acceptance of these Terms of Service
             </p>
           </div>
           <div class="first_div">
@@ -31,7 +32,7 @@
           </div>
           <div class="first_div">
             <h3 class="heading1">YOUR ACCOUNT</h3>
-            <p>In order to access certain information and features offered on this website and mobile app, you must create an account. To create your account, you must complete your account details in the manner described on this website (including selecting an email address, and password which we will use to verify your identity when you use this website). You must ensure that your account details are complete and accurate when submitted to us, certify that the information that you have given is true and correct, and you must keep your account details up-to-date. We may at our discretion (at any time and without notice to you) suspend or terminate your account, or your ability to use the functions available through this website.
+            <p>In order to access certain information and features offered on this website and mobile app, you must create an account. To create your account, you must complete your account details in the manner described on this website (including selecting an email address,Mobile number, and password which we will use to verify your identity when you use this website). You must ensure that your account details are complete and accurate when submitted to us, certify that the information that you have given is true and correct, and you must keep your account details up-to-date. We may at our discretion (at any time and without notice to you) suspend or terminate your account, or your ability to use the functions available through this website.
             </p>
           </div>
           <div class="first_div">
@@ -71,12 +72,12 @@
           </div>
           <div class="first_div">
             <h3 class="heading1">YOUR PRIVACY</h3>
-            <p>Where we collect personal information about you as a result of your accessing and using this website and mobile app, our Privacy Policy will apply to that information. You can read our Privacy Policy here at link
+            <p>Where we collect personal information about you as a result of your accessing and using this website and mobile app, our Privacy Policy will apply to that information. You can read our Privacy Policy here at Https://myprioritycleaning.com/
             </p>
           </div>
           <div class="first_div">
             <h3 class="heading1">INTELLECTUAL PROPERTY</h3>
-            <p>The materials displayed on this website and mobile app are protected by copyright and other laws of United Kingdom, and under similar laws and international conventions abroad. You acknowledge and agree that all copyright and other intellectual property rights that may subsist in this website and mobile app including text, illustrations, photographs, video, music, sounds, layout, designs, source code, belong to us or to our licensors (together, ‘our intellectual property’). Except with our prior written permission, you may not in any form or by any means:
+            <p>The materials displayed on this website and mobile app are protected by copyright and other laws of USA, and under similar laws and international conventions abroad. You acknowledge and agree that all copyright and other intellectual property rights that may subsist in this website and mobile app including text, illustrations, photographs, video, music, sounds, layout, designs, source code, belong to us or to our licensors (together, ‘our intellectual property’). Except with our prior written permission, you may not in any form or by any means:
 
             </p>
           </div>
@@ -89,7 +90,7 @@
         </strong>
         </div>
         <div class="footer">
-            <div class="container  footer_heads mt-2">A registered domain with the Manhattan. Northern New Jersey, and South Florida organisation . 2017
+            <div class="container  footer_heads mt-2">A registered domain with the Manhattan. Northern New Jersey, and South Florida organisation . 2019
                 &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;<button type="button" class="btn btn-secondary">TERMS & CONDITIONS</button>
             </div>
         </div>
