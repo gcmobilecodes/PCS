@@ -9,9 +9,11 @@
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
      <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
      <link rel="stylesheet" href="{{ asset('assets/cs/style3.css') }}">
-
-<style>@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap');
-</style>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap" rel="stylesheet">
+{{-- <style>@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap');
+</style> --}}
 </head>
 <body>
     <section class="top-div">
