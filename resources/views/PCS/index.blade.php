@@ -10,6 +10,8 @@
      <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
      <link rel="stylesheet" href="{{ asset('assets/cs/style3.css') }}">
 
+<style>@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap');
+</style>
 </head>
 <body>
     <section class="top-div">
