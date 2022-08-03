@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Condensed:wght@700&family=Roboto:ital,wght@0,400;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap');
+
+
 *{
-    font-family: 'Lobster', cursive;
-    font-family: 'Roboto', sans-serif;
-    font-family: 'Roboto Condensed', sans-serif;
+
+    font-family: 'Merriweather', serif;
 }
 
 body{
